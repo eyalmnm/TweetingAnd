@@ -1,0 +1,32 @@
+package com.em_projects.tweetings
+
+import android.content.Context
+import android.content.Intent
+import android.support.v7.app.AppCompatActivity
+import android.os.Bundle
+import android.os.Handler
+import android.util.Log
+import com.em_projects.tweetings.main.MainScreenActivity
+
+class MainActivity : AppCompatActivity() {
+    private val TAG: String = "MainActivity";
+
+    private var context: Context? = null
+    private val displayTime: Long = 3000
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        Log.d(TAG, "onCreate")
+        context = this
+
+        Handler().postDelayed(Runnable { fun run() {
+            var intent: Intent = Intent(context, MainScreenActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out)
+            finish()
+
+        } }, displayTime)
+    }
+}

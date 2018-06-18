@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+</resources>

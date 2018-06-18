@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Tweetings</string>
+    <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+</resources>

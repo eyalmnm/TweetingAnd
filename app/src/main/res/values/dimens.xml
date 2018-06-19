@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Login Activity -->
+    <dimen name="login_title_text_size">18sp</dimen>
+    <dimen name="login_second_title_text_size">18sp</dimen>
+
+    <!-- Sign Up Activity -->
+    <dimen name="sign_up_check_box_title_text_size">18sp</dimen>
+</resources>

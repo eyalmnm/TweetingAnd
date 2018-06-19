@@ -1,4 +1,26 @@
 <resources>
     <string name="app_name">Tweetings</string>
+    <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+
+    <!-- Login Activity -->
+    <string name="login_title">Connecting</string>
+    <string name="login_second_title">Regular Login</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hing">Password</string>
+    <string name="login_no_account_title"><![CDATA[No account yet?<U>Create one</U>]]></string>
+    <string name="login_forget_password_title"><![CDATA[Forget Your Password?<U>Press Here!</U>]]></string>
+    <string name="login_login_button_text">Login</string>
+
+    <!-- Sign Up Activity -->
+    <string name="sign_up_title">Sign Up</string>
+    <string name="sign_up_second_title">Simple Sign Up</string>
+    <string name="sign_up_name_hint">Name</string>
+    <string name="sign_up_mobile_hint">Mobile Number</string>
+    <string name="sign_up_email_hint">Email</string>
+    <string name="sign_up_join_date_hint">Join Army Date</string>
+    <string name="sign_up_send_button_text">Send</string>
+    <string name="sign_up_accept">Accept Conditions</string>
+    <string name="sign_up_offers">Accept Offers</string>
+
 </resources>

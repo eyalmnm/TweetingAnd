@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import com.em_projects.tweetings.R
-import com.em_projects.tweetings.view.main.signinup.adapters.SpinnerAdapter
+import com.em_projects.tweetings.view.main.adapters.SpinnerAdapter
 
 class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private val TAG = "SignUpActivity"

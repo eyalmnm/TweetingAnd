@@ -88,5 +88,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onBackPressed() {
         var intent: Intent = Intent(Constants.ACTION_OPERATION_CANCELLED)
         setResult(Activity.RESULT_CANCELED, intent)
+        super.onBackPressed()
     }
 }

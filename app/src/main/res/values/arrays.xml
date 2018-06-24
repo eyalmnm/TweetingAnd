@@ -5,4 +5,19 @@
         <item>Center</item>
         <item>South</item>
     </string-array>
+
+    <string-array name="citizenship_array">
+        <item>Israel</item>
+        <item>USA</item>
+        <item>Canada</item>
+        <item>Australia</item>
+        <item>Italy</item>
+    </string-array>
+
+    <string-array name="visa_array">
+        <item>Visa A</item>
+        <item>Visa B</item>
+        <item>Visa C</item>
+        <item>Visa D</item>
+    </string-array>
 </resources>

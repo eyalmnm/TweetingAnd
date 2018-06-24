@@ -9,8 +9,8 @@
     <string name="login_second_title">Regular Login</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hing">Password</string>
-    <string name="login_no_account_title"><![CDATA[No account yet?<U>Create one</U>]]></string>
-    <string name="login_forget_password_title"><![CDATA[Forget Your Password?<U>Press Here!</U>]]></string>
+    <string name="login_no_account_title">No account yet? <u>Create one</u></string>
+    <string name="login_forget_password_title">Forget Your Password? <u>Press Here!</u></string>
     <string name="sign_up_title">Sign Up</string>
     <string name="sign_up_second_title">Simple Sign Up</string>
     <string name="sign_up_name_hint">Name</string>
@@ -21,4 +21,6 @@
     <string name="sign_up_send_button_text">Send</string>
     <string name="sign_up_accept">Accept Conditions</string>
     <string name="sign_up_offers">Accept Offers</string>
+    <string name="missing_data_all">All feildes must be filled.</string>
+    <string name="sighn_up_home_area_title">County</string>
 </resources>

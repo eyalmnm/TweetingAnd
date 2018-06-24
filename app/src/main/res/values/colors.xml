@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@android:color/holo_orange_light</color>
+    <color name="colorPrimary">#fd9b00</color>
     <color name="colorPrimaryDark">@android:color/holo_orange_dark</color>
     <color name="colorAccent">@android:color/white</color>
 
     <color name="mainTextColor">@android:color/darker_gray</color>
+
+    <color name="dialog_bg_color">#F6F6F6</color>
 </resources>

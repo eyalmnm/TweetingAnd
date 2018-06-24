@@ -50,7 +50,8 @@
             android:paddingTop="10dp"
             tools:ignore="ExtraText">
 
-            <com.facebook.login.widget.LoginButton
+            <!--com.facebook.login.widget.LoginButton -->
+            <Button
                 android:id="@+id/facebook_sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,15 +162,31 @@
             </LinearLayout>
 
             <!-- Living Area Spinner -->
-            <Spinner
-                android:id="@+id/signUpAreasSpinner"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
-                android:focusableInTouchMode="true"
-                android:imeOptions="actionNext"
-                android:inputType="text" />
+                android:orientation="horizontal"
+                android:weightSum="1.5">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="@string/sighn_up_home_area_title"
+                    android:textSize="@dimen/login_second_title_text_size" />
+
+                <Spinner
+                    android:id="@+id/signUpAreasSpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:focusableInTouchMode="true"
+                    android:imeOptions="actionNext"
+                    android:inputType="text" />
+            </LinearLayout>
 
             <!-- Password Label -->
             <android.support.design.widget.TextInputLayout

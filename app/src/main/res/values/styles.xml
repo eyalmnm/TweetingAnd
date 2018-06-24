@@ -9,4 +9,8 @@
         <item name="android:textColor">@color/mainTextColor</item>
     </style>
 
+    <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="windowNoTitle">true</item>
+        <item name="android:background">@color/dialog_bg_color</item>
+    </style>
 </resources>

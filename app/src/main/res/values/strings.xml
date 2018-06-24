@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Tweetings</string>
+
+    <!-- Splash -->
+    <string name="app_version_format" translatable="false">Version v %s (%d) </string>
+
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
 
@@ -8,8 +12,8 @@
     <string name="login_second_title">Regular Login</string>
     <string name="login_email_hint">Email</string>
     <string name="login_password_hing">Password</string>
-    <string name="login_no_account_title"><![CDATA[No account yet?<U>Create one</U>]]></string>
-    <string name="login_forget_password_title"><![CDATA[Forget Your Password?<U>Press Here!</U>]]></string>
+    <string name="login_no_account_title">No account yet? <u>Create one</u></string>
+    <string name="login_forget_password_title">Forget Your Password? <u>Press Here!</u></string>
     <string name="login_login_button_text">Login</string>
 
     <!-- Sign Up Activity -->
@@ -22,5 +26,7 @@
     <string name="sign_up_send_button_text">Send</string>
     <string name="sign_up_accept">Accept Conditions</string>
     <string name="sign_up_offers">Accept Offers</string>
+    <string name="missing_data_all">All fields must be filled.</string>
+    <string name="sighn_up_home_area_title">County</string>
 
 </resources>

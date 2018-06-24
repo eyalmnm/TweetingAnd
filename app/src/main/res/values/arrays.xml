@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="living_areas_array">
+        <item>North</item>
+        <item>Center</item>
+        <item>South</item>
+    </string-array>
+</resources>

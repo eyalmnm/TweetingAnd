@@ -50,7 +50,8 @@
             android:paddingTop="10dp"
             tools:ignore="ExtraText">
 
-            <com.facebook.login.widget.LoginButton
+            <!--com.facebook.login.widget.LoginButton -->
+            <Button
                 android:id="@+id/facebook_login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

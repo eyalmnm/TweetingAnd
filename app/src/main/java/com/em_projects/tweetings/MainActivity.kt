@@ -2,11 +2,12 @@ package com.em_projects.tweetings
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.em_projects.tweetings.main.MainScreenActivity
+import com.em_projects.tweetings.view.main.MainScreenActivity
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String = "MainActivity";
@@ -20,13 +21,14 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
         context = this
 
-        Handler().postDelayed(Runnable { fun run() {
-            var intent: Intent = Intent(context, MainScreenActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-            startActivity(intent)
-            overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out)
-            finish()
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { moveToNextScreen() }, displayTime)
+    }
 
-        } }, displayTime)
+    fun moveToNextScreen() {
+        var intent: Intent = Intent(context, MainScreenActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out)
+        finish()
     }
 }

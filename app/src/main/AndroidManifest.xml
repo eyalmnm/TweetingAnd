@@ -22,11 +22,28 @@
 
         <!-- Main Screen Activity -->
         <activity
-            android:name=".main.MainScreenActivity"
+            android:name="com.em_projects.tweetings.view.main.MainScreenActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
+
+        <!-- Login Activity -->
+        <activity
+            android:name=".view.main.signinup.LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Sign Up Activity -->
+        <activity
+            android:name=".view.main.signinup.SignUpActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

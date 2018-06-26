@@ -6,6 +6,8 @@
 
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
     <!-- Login Activity -->
     <string name="login_title">Connecting</string>
@@ -42,5 +44,14 @@
     <string name="send_my_details_citizenship_title">Citizen</string>
     <string name="send_my_details_visa_title">Visa</string>
     <string name="send_my_details_call_me_button_text">Call Me</string>
+
+    <!-- Drawer Activity -->
+    <string name="title_activity_drawer">DrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

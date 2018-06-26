@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tweetings</string>
+
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
 
@@ -11,23 +11,20 @@
     <string name="login_password_hing">Password</string>
     <string name="login_no_account_title">No account yet? <u>Create one</u></string>
     <string name="login_forget_password_title">Forget Your Password? <u>Press Here!</u></string>
+    <string name="login_login_button_text">Login</string>
+
+    <!-- Sign Up Activity -->
     <string name="sign_up_title">Sign Up</string>
     <string name="sign_up_second_title">Simple Sign Up</string>
     <string name="sign_up_name_hint">Name</string>
     <string name="sign_up_mobile_hint">Mobile Number</string>
     <string name="sign_up_email_hint">Email</string>
     <string name="sign_up_join_date_hint">Join Army Date</string>
-    <string name="login_login_button_text">Login</string>
     <string name="sign_up_send_button_text">Send</string>
     <string name="sign_up_accept">Accept Conditions</string>
     <string name="sign_up_offers">Accept Offers</string>
-    <string name="missing_data_all">All feildes must be filled.</string>
+    <string name="missing_data_all">All fields must be filled.</string>
     <string name="sighn_up_home_area_title">County</string>
-    <string name="send_my_details_title">Send Details</string>
-    <string name="sign_up_age_hint">Age</string>
-    <string name="send_my_details_citizenship_title">Citizen</string>
-    <string name="send_my_details_visa_title">Visa</string>
-    <string name="send_my_details_call_me_button_text">Call Me</string>
     <string name="missing_name">Name is missing!</string>
     <string name="missing_phone">Phone number is missing!</string>
     <string name="missing_email">Email is missing</string>
@@ -35,4 +32,12 @@
     <string name="missing_living_area">Living area is missing</string>
     <string name="missing_password">Password is missing</string>
     <string name="password_mismatch">Password mismatch</string>
+
+    <!-- Send My Details Activity -->
+    <string name="send_my_details_title">Send Details</string>
+    <string name="sign_up_age_hint">Age</string>
+    <string name="send_my_details_citizenship_title">Citizen</string>
+    <string name="send_my_details_visa_title">Visa</string>
+    <string name="send_my_details_call_me_button_text">Call Me</string>
+
 </resources>

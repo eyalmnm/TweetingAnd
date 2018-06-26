@@ -44,6 +44,14 @@
             android:theme="@style/AppDialogTheme"
             android:windowSoftInputMode="adjustPan" />
 
+        <!-- Drawer Activity -->
+        <activity
+            android:name=".view.main.menu.DrawerActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
 
 </manifest>

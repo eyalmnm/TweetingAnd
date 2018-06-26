@@ -17,6 +17,8 @@ import com.em_projects.tweetings.viewmodel.signinup.SignInViewModle
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
+// Ref: https://android--code.blogspot.com/2018/03/android-kotlin-navigation-drawer-example.html
+
 class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
     private val TAG: String = "MainScreenActivity";
 

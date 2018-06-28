@@ -15,7 +15,7 @@ class SpinnerAdapter(private val activity: AppCompatActivity, private val itextV
     private var inflater: LayoutInflater? = null
 
     init {
-        inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
+        inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
     }
 
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -27,8 +27,11 @@ class SpinnerAdapter(private val activity: AppCompatActivity, private val itextV
     }
 
     private fun getCustomView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var row: View? = inflater?.inflate(itextViewResourceId, parent, false);
-        var textView: TextView = row?.findViewById(R.id.datTextView)!!
+        var row = convertView
+        if (row == null) {
+            row = inflater?.inflate(itextViewResourceId, parent, false);
+        }
+        val textView: TextView = row?.findViewById(R.id.datTextView)!!
         textView.text = strings.get(position)
         return row
     }

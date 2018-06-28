@@ -44,6 +44,9 @@ dependencies {
     // Facebook Library
     implementation 'com.facebook.android:facebook-login:4.33.0'
 
+    // Piccaso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+
     // Testing Libraries
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

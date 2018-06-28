@@ -6,6 +6,8 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.em_projects.tweetings.model.drawerModels.OpeningOfferModel
 import com.em_projects.tweetings.view.main.menu.fragments.OfferFragment
 
+// Ref: https://www.raywenderlich.com/169774/viewpager-tutorial-android-getting-started-kotlin
+
 class OffersPagerAdapter(fragmentManager: FragmentManager, private val offers: ArrayList<OpeningOfferModel>) :
         FragmentStatePagerAdapter(fragmentManager) {
 

@@ -15,4 +15,8 @@
     <dimen name="nav_header_height">176dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!-- Opening Fragment -->
+    <dimen name="opening_offers_view_pager_height">204dp</dimen>
+    <dimen name="opening_offers_title_text_size">15dp</dimen>
+
 </resources>

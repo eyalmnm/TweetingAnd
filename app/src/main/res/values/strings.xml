@@ -54,4 +54,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Opening Fragment -->
+    <string name="opening_offers_title_text">Offers</string>
+    <string name="opening_studies_title_text">Studies</string>
+    <string name="opening_jobs_title_text">Jobs</string>
+
 </resources>

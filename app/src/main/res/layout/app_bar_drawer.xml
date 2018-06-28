@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.main.drawer.DrawerActivity">
+    tools:context=".view.main.menu.DrawerActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,21 +15,20 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorAccent"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
                 android:id="@+id/llContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#22000000"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    android:src="@drawable/rectangle_1_copy" />
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>

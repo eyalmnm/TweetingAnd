@@ -39,5 +39,8 @@
     <string name="send_my_details_citizenship_title">Citizen</string>
     <string name="send_my_details_visa_title">Visa</string>
     <string name="send_my_details_call_me_button_text">Call Me</string>
+    <string name="opnening_offers_title_text">Offers</string>
+    <string name="opening_studies_title_text">Studies</string>
+    <string name="opening_jobs_title_text">Jobs</string>
 
 </resources>

@@ -9,13 +9,7 @@
     <color name="dialog_bg_color">#F6F6F6</color>
 
     <!-- General Colors -->
-    <color name="orange">#f37721</color>
-    <color name="turquoise">#FF00C5CD</color>
-    <color name="dark_gray">#FF333333</color>
-    <color name="black">#ff000000</color>
     <color name="white">#ffffffff</color>
     <color name="light_gray">#FFCCCCCC</color>
-    <color name="semi_transparent">#44000000</color>
-    <color name="transparent">@android:color/transparent</color>
 
 </resources>

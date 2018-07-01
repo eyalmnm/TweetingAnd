@@ -9,14 +9,18 @@
     <dimen name="sign_up_check_box_title_text_size">18sp</dimen>
 
     <!-- Drawer Activity -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">2dp</dimen>
+    <dimen name="activity_vertical_margin">2dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
-    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="nav_header_height">120dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- Opening Fragment -->
     <dimen name="opening_offers_view_pager_height">204dp</dimen>
     <dimen name="opening_offers_title_text_size">15dp</dimen>
+
+    <!-- Main Menu -->
+    <dimen name="main_menu_width">270dp</dimen>
+    <dimen name="main_menu_button_width">130dp</dimen>
 
 </resources>

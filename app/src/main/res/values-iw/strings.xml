@@ -42,5 +42,17 @@
     <string name="opnening_offers_title_text">Offers</string>
     <string name="opening_studies_title_text">Studies</string>
     <string name="opening_jobs_title_text">Jobs</string>
+    <string name="vav_registration">Registration</string>
+    <string name="nav_register">Register</string>
+    <string name="nav_connect">Connect</string>
+    <string name="nav_welcome">Welcome</string>
+    <string name="nav_personal">Personal</string>
+    <string name="nav_disconnect">Disconnect</string>
+    <string name="nav_offers">Offers</string>
+    <string name="nav_studies">Studies</string>
+    <string name="nav_jobs">Jobs</string>
+    <string name="nav_contact">Contact</string>
+    <string name="nav_condition">Conditions</string>
+    <string name="nav_ad_here">Ad Here</string>
 
 </resources>

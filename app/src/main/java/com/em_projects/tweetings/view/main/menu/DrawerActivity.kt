@@ -101,23 +101,23 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
-                Log.d("TAG", "camera")
+            R.id.nav_offers -> {
+                Log.d("TAG", "nav_offers")
             }
-            R.id.nav_gallery -> {
-                Log.d("TAG", "gallery")
+            R.id.nav_studies -> {
+                Log.d("TAG", "nav_studies")
             }
-            R.id.nav_slideshow -> {
-                Log.d("TAG", "slide show")
+            R.id.nav_jobs -> {
+                Log.d("TAG", "nav_jobs")
             }
-            R.id.nav_manage -> {
-                Log.d("TAG", "manage")
+            R.id.nav_contact_us -> {
+                Log.d("TAG", "nav_contact_us")
             }
-            R.id.nav_share -> {
-                Log.d("TAG", "share")
+            R.id.nav_conditions -> {
+                Log.d("TAG", "nav_conditions")
             }
-            R.id.nav_send -> {
-                Log.d("TAG", "send")
+            R.id.nav_ad -> {
+                Log.d("TAG", "nav_ad")
             }
         }
 

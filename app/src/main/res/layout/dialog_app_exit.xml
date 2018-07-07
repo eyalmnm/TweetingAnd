@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppTheme"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:windowSoftInputMode="adjustResize|adjustPan">
+
+    <TextView
+        android:id="@+id/captionTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:text="@string/exit_title"
+        android:textAllCaps="false"
+        android:textColor="@color/mainTextColor"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/messageTextView"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/captionTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:gravity="center_horizontal"
+        android:text="@string/exit_message"
+        android:textAllCaps="false"
+        android:textColor="@color/mainTextColor"
+        android:textSize="17sp" />
+
+    <!--Button
+        android:id="@+id/okButton"
+        style="@style/AppButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/messageTextView"
+        android:layout_margin="10dp"
+        android:text="@android:string/ok"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        style="@style/AppButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/messageTextView"
+        android:layout_margin="10dp"
+        android:text="@android:string/cancel"
+        android:textAllCaps="true" /-->
+
+    <Button
+        android:id="@+id/cancelButton"
+        style="@style/AppButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/messageTextView"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="@android:string/cancel"
+        android:textAllCaps="true" />
+
+    <Button
+        android:id="@+id/okButton"
+        style="@style/AppButton"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignBottom="@id/cancelButton"
+        android:layout_alignTop="@id/cancelButton"
+        android:layout_below="@id/messageTextView"
+        android:layout_toEndOf="@id/cancelButton"
+        android:layout_toRightOf="@id/cancelButton"
+        android:text="@android:string/ok"
+        android:textAllCaps="true" />
+
+
+</RelativeLayout>

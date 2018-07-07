@@ -12,4 +12,10 @@
     <color name="white">#ffffffff</color>
     <color name="light_gray">#FFCCCCCC</color>
 
+    <!-- Fab colors -->
+    <color name="colorFAB_normal">#757575</color>
+    <color name="colorFAB_pressed">#55000000</color>
+    <!--color name="colorFAB_pressed">#e0e0e0</color-->
+    <!--color name="colorFAB_pressed">@color/windowBackground</color-->
+
 </resources>

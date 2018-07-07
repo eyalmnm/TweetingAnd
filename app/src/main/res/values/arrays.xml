@@ -20,4 +20,11 @@
         <item>Visa C</item>
         <item>Visa D</item>
     </string-array>
+
+    <string-array name="bagrot_array">
+        <item>Type A</item>
+        <item>Type B</item>
+        <item>Type C</item>
+        <item>Type D</item>
+    </string-array>
 </resources>

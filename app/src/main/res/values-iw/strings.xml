@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Tweetings</string>
 
+    <!-- Splash -->
+
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
 
@@ -39,6 +41,20 @@
     <string name="send_my_details_citizenship_title">Citizen</string>
     <string name="send_my_details_visa_title">Visa</string>
     <string name="send_my_details_call_me_button_text">Call Me</string>
+
+    <!-- Drawer Activity -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Main Menu</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- App Exit Dialog -->
+    <string name="exit_title">Exit</string>
+    <string name="exit_message">You are about to exit the application. Do you want to continue with exit?</string>
+
+    <!-- Opening Fragment -->
+
+    <!-- Main Meny -->
     <string name="nav_register">Register</string>
     <string name="nav_connect">Connect</string>
     <string name="nav_personal">Personal</string>
@@ -49,5 +65,14 @@
     <string name="nav_contact">Contact</string>
     <string name="nav_condition">Conditions</string>
     <string name="nav_ad_here">Ad Here</string>
+
+    <!-- Studies Contact -->
+    <string name="need_study_consaltent_title">Please contact me about studies</string>
+    <string name="studies_name_hint">Name</string>
+    <string name="studies_mobile_hint">Phone Number</string>
+    <string name="studies_domain_hint">Study Domain</string>
+    <string name="studies_home_area_title">Living Area</string>
+    <string name="studies_certification_title">Bagrot</string>
+    <string name="studies_call_me_button_text">Call Me</string>
 
 </resources>

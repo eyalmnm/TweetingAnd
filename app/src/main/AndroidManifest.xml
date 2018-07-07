@@ -49,6 +49,14 @@
             android:name=".view.main.menu.DrawerActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Studies Activities -->
+        <activity
+            android:name=".view.main.studies.StudiesContactMeActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/AppDialogTheme"
             android:windowSoftInputMode="adjustPan" />
 

@@ -31,5 +31,7 @@ class Constants {
         val JOIN_DATE = "JOIN_DATE"
         val LIVING_AREA = "LIVING_AREA"
         val PASSWORD = "PASSWORD"
+        val DOMAIN = "DOMAIN"
+        val BAGRUT = "BAGRUT"
     }
 }

@@ -2,6 +2,7 @@ package com.em_projects.tweetings.view.main
 
 import android.Manifest
 import android.app.Activity
+import android.app.FragmentManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.utils.StringUtils
+import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
 import com.em_projects.tweetings.viewmodel.signinup.SignInViewModle
@@ -71,12 +73,18 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
                     var intent = Intent(context, SignUpActivity::class.java)
                     startActivityForResult(intent, RC_SHOW_SIGN_UP_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
-                    Log.e(TAG, "Handle operation cancelled")
+                    showExitDialog()
                 }
             }
         } else if (requestCode == RC_SHOW_SIGN_UP_ACTIVITY) {
             TODO("not implemented")
         }
+    }
+
+    private fun showExitDialog() {
+        var fragmentManager: FragmentManager = getFragmentManager()
+        var appExitDialog: AppExitDialog = AppExitDialog()
+        appExitDialog.show(fragmentManager, "AppExitDialog")
     }
 
     // **********************************   PERMISSIONS SECTION   **********************************
@@ -103,4 +111,12 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
         Log.d(TAG, "onRationaleAccepted:$requestCode")
     }
     // **********************************   PERMISSIONS SECTION   **********************************
+
+    /**
+     * Take care of popping the fragment back stack or finishing the activity
+     * as appropriate.
+     */
+    override fun onBackPressed() {
+        showExitDialog()
+    }
 }

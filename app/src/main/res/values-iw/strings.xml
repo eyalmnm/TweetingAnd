@@ -74,5 +74,6 @@
     <string name="studies_home_area_title">Living Area</string>
     <string name="studies_certification_title">Bagrot</string>
     <string name="studies_call_me_button_text">Call Me</string>
+    <string name="missing_domain">Missing Study Domain</string>
 
 </resources>

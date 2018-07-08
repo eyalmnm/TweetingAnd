@@ -29,6 +29,8 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
     private var bagrutTypes: ArrayList<String>? = null
     private var bagrut: String = "Type A"
 
+    //
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -12,6 +12,8 @@ import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.adapters.SpinnerAdapter
+import com.em_projects.tweetings.view.main.studies.data_types.DummyChildDataItem
+import com.em_projects.tweetings.view.main.studies.data_types.DummyParentDataItem
 import kotlinx.android.synthetic.main.activity_studies_contact_me.*
 
 class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -103,6 +105,8 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
         } else if (parent == studiesCertificationSpinner) {
             bagrut = bagrutTypes?.get(position)!!
         }
+
+
     }
 
     /**
@@ -113,5 +117,69 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
         var intent: Intent = Intent(Constants.ACTION_OPERATION_CANCELLED)
         setResult(Activity.RESULT_CANCELED, intent)
         super.onBackPressed()
+    }
+
+
+    // Dummi Data Creator
+    private fun getDummyDataToPass(): ArrayList<DummyParentDataItem> {
+        val dummyDataItems = ArrayList<DummyParentDataItem>()
+        var dummyChildDataItems: ArrayList<DummyChildDataItem>
+        var dummyParentDataItem: DummyParentDataItem
+        var dummyChildDataItem: DummyChildDataItem
+        /////////
+        dummyParentDataItem = DummyParentDataItem()
+        dummyParentDataItem.setParentName("Parent 1")
+        dummyChildDataItems = ArrayList()
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 1")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyParentDataItem.setChildDataItems(dummyChildDataItems)
+        dummyDataItems.add(dummyParentDataItem)
+        ////////
+        dummyParentDataItem = DummyParentDataItem()
+        dummyParentDataItem.setParentName("Parent 2")
+        dummyChildDataItems = ArrayList()
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 1")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 2")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyParentDataItem.setChildDataItems(dummyChildDataItems)
+        dummyDataItems.add(dummyParentDataItem)
+        ////////
+        dummyParentDataItem = DummyParentDataItem()
+        dummyParentDataItem.setParentName("Parent 3")
+        dummyChildDataItems = ArrayList()
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 1")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 2")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 3")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 4")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyChildDataItem = DummyChildDataItem()
+        dummyChildDataItem.setChildName("Child Item 5")
+        dummyChildDataItems.add(dummyChildDataItem)
+        //
+        dummyParentDataItem.setChildDataItems(dummyChildDataItems)
+        dummyDataItems.add(dummyParentDataItem)
+        ////////
+        return dummyDataItems
     }
 }

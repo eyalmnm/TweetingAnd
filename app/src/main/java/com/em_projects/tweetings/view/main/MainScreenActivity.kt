@@ -1,6 +1,5 @@
 package com.em_projects.tweetings.view.main
 
-import android.Manifest
 import android.app.Activity
 import android.app.FragmentManager
 import android.content.Context
@@ -16,22 +15,16 @@ import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
 import com.em_projects.tweetings.viewmodel.signinup.SignInViewModle
-import pub.devrel.easypermissions.AppSettingsDialog
-import pub.devrel.easypermissions.EasyPermissions
 
 // Ref: https://android--code.blogspot.com/2018/03/android-kotlin-navigation-drawer-example.html
 
-class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks, EasyPermissions.RationaleCallbacks {
+class MainScreenActivity : AppCompatActivity() {
     private val TAG: String = "MainScreenActivity";
 
-    private val RC_INTERNET_PERM = 123
-    private val RC_LOCATION_CONTACTS_PERM = 124;
-
-    private val RC_SHOW_LOGIN_ACTIVITY = 125;
-    private val RC_SHOW_SIGN_UP_ACTIVITY = 126;
+    private val SHOW_LOGIN_ACTIVITY: Int = 123
+    private val SHOW_SIGN_UP_ACTIVITY = SHOW_LOGIN_ACTIVITY + 1
 
     private var context: Context? = null
-    private val permissions: Array<String> = arrayOf(Manifest.permission.INTERNET)
 
     private var signInViewModel: SignInViewModle? = null
 
@@ -42,20 +35,13 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
         signInViewModel = SignInViewModle(this)
         context = this;
 
-        if (EasyPermissions.hasPermissions(context as MainScreenActivity, permissions.toString())) {
-            continueLoading()
-        } else {
-            EasyPermissions.requestPermissions(context as MainScreenActivity,
-                    getString(R.string.internet_connection_rationale),
-                    RC_INTERNET_PERM,
-                    permissions.toString())
-        }
+        continueLoading()
     }
 
     private fun continueLoading() {
         if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
             var intent = Intent(context, LoginActivity::class.java)
-            startActivityForResult(intent, RC_SHOW_LOGIN_ACTIVITY)
+            startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
         }
     }
 
@@ -63,7 +49,7 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
      * Dispatch incoming result to the correct fragment.
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == RC_SHOW_LOGIN_ACTIVITY) {
+        if (requestCode == SHOW_LOGIN_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
                 var email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
                 var password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
@@ -71,12 +57,12 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
                     var intent = Intent(context, SignUpActivity::class.java)
-                    startActivityForResult(intent, RC_SHOW_SIGN_UP_ACTIVITY)
+                    startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
                     showExitDialog()
                 }
             }
-        } else if (requestCode == RC_SHOW_SIGN_UP_ACTIVITY) {
+        } else if (requestCode == SHOW_SIGN_UP_ACTIVITY) {
             TODO("not implemented")
         }
     }
@@ -86,31 +72,6 @@ class MainScreenActivity : AppCompatActivity(), EasyPermissions.PermissionCallba
         var appExitDialog: AppExitDialog = AppExitDialog()
         appExitDialog.show(fragmentManager, "AppExitDialog")
     }
-
-    // **********************************   PERMISSIONS SECTION   **********************************
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        Log.d(TAG, "onPermissionsDenied:" + requestCode + ":" + perms.size)
-
-        // (Optional) Check whether the user denied any permissions and checked "NEVER ASK AGAIN."
-        // This will display a dialog directing them to enable the permission in app settings.
-        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms)) {
-            AppSettingsDialog.Builder(this).build().show()
-        }
-    }
-
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        Log.d(TAG, "onPermissionsGranted:" + requestCode + ":" + perms.size)
-        continueLoading()
-    }
-
-    override fun onRationaleDenied(requestCode: Int) {
-        Log.d(TAG, "onRationaleDenied:$requestCode")
-    }
-
-    override fun onRationaleAccepted(requestCode: Int) {
-        Log.d(TAG, "onRationaleAccepted:$requestCode")
-    }
-    // **********************************   PERMISSIONS SECTION   **********************************
 
     /**
      * Take care of popping the fragment back stack or finishing the activity

@@ -28,7 +28,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     // Date Picker Dialog
     private var cal = Calendar.getInstance()
     private var signUpJoinDateEditText: TextView? = null
-    private var signUpJoinDateButton: Button? = null
+    private var signUpJoinDateButton: ImageButton? = null
     private var date: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +46,8 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         area = livingAreas?.get(0)!!
         signUpAreasSpinner?.setSelection(0, true)
 
-        signUpJoinDateEditText = this.signUpJoinDateEditText
-        signUpJoinDateButton = this.signUpJoinDateButton
+        signUpJoinDateEditText = findViewById(R.id.signUpJoinDateEditText)
+        signUpJoinDateButton = findViewById(R.id.signUpJoinDateButton)
         // when you click on the button, show DatePickerDialog that is set with OnDateSetListener
         signUpJoinDateButton!!.setOnClickListener(object : View.OnClickListener {
             override fun onClick(view: View) {

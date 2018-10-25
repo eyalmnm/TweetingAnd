@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.em_projects.tweetings.view.main.MainScreenActivity
 
+https://stackoverflow.com/questions/5745814/android-change-horizontal-progress-bar-color
+
 class MainActivity : AppCompatActivity() {
     private val TAG: String = "MainActivity";
 

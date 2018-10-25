@@ -23,8 +23,8 @@
     <string name="sign_up_email_hint">דואר אלקטרוני</string>
     <string name="sign_up_join_date_hint">תאריך גיוס</string>
     <string name="sign_up_send_button_text">שלח</string>
-    <string name="sign_up_accept">מאשר/ת את תנאי השחמוש</string>
-    <string name="sign_up_offers">תאשר/ת קבלת הטבות מגורם שלישי</string>
+    <string name="sign_up_accept">מאשר/ת את תנאי השימוש</string>
+    <string name="sign_up_offers">מאשר/ת קבלת הטבות מגורם שלישי</string>
     <string name="missing_data_all">כל השדות הם חובה</string>
     <string name="sighn_up_home_area_title">איזור</string>
     <string name="missing_name">יש למלא את השם</string>
@@ -34,6 +34,9 @@
     <string name="missing_living_area">יש לבחור את איזור המגורים</string>
     <string name="missing_password">יש למלא את הסיסמה</string>
     <string name="password_mismatch">אין תאימות בין הסיסמאות</string>
+    <string name="sighn_up_password_hint">סיסמה</string>
+    <string name="sighn_up_re_password_hint">אימות סיסמה</string>
+    <string name="sighn_up_already_registered">כבר רשומים? כניסה</string>
 
     <!-- Send My Details Activity -->
     <string name="send_my_details_title">שליחת פרטים</string>
@@ -75,5 +78,7 @@
     <string name="studies_certification_title">בגרות</string>
     <string name="studies_call_me_button_text">דברו איתי</string>
     <string name="missing_domain">יש למלא תחום לימודים</string>
+    <string name="studies_how_take_advantage_of_pikadon">איך בא לך לנצל את הפיקדון?</string>
+    <string name="studies_search_by_countries">חפש לפי איזור</string>
 
 </resources>

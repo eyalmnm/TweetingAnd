@@ -199,7 +199,7 @@
                     android:id="@+id/input_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/sighn_up_password_hint"
                     android:imeOptions="actionNext"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
@@ -215,7 +215,7 @@
                     android:id="@+id/input_reEnterPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Re-enter Password"
+                    android:hint="@string/sighn_up_re_password_hint"
                     android:imeOptions="actionSend"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
@@ -260,7 +260,7 @@
                 android:layout_marginBottom="24dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="Already a member? Login"
+                android:text="@string/sighn_up_already_registered"
                 android:textSize="16dip" />
 
         </LinearLayout>

@@ -171,14 +171,99 @@
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent" />
 
+
+            <!-- Additional Data -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Use Pikadon -->
+                <Button
+                    android:id="@+id/btn_studiesUsePikadon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded_rectangle_1_copy_7"
+                    android:padding="12dp"
+                    android:text="@string/studies_how_take_advantage_of_pikadon"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent" />
+
+                <LinearLayout
+                    android:id="@+id/studiesUsePikadonOptionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/studiesUsePikadonOptionsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- Search By Counyry -->
+                <Button
+                    android:id="@+id/btn_studiesSearchPlaces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded_rectangle_1_copy_7"
+                    android:padding="12dp"
+                    android:text="@string/studies_search_by_countries"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent" />
+
+                <LinearLayout
+                    android:id="@+id/studiesSearchPlacesOptionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/studiesSearchPlacesOptionsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!-- Information -->
+                <Button
+                    android:id="@+id/btn_studiesInformation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/rounded_rectangle_1_copy_7"
+                    android:padding="12dp"
+                    android:text="@string/studies_search_by_countries"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorAccent" />
+
+                <LinearLayout
+                    android:id="@+id/studiesInformationsOptionsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <GridViewView
+                        android:id="@+id/studiesSearchPlacesOptionsGrid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="2dp" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+
+        <!--android.support.v7.widget.RecyclerView
             android:id="@+id/studiesOtherOffersRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"
-            android:scrollbars="vertical" />
+            android:scrollbars="vertical" /-->
     </LinearLayout>
 </ScrollView>

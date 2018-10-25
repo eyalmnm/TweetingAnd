@@ -14,6 +14,7 @@
     <string name="login_no_account_title">No account yet? <u>Create one</u></string>
     <string name="login_forget_password_title">Forget Your Password? <u>Press Here!</u></string>
     <string name="login_login_button_text">Login</string>
+    <string name="facebook_app_id">421931941654435</string>
 
     <!-- Sign Up Activity -->
     <string name="sign_up_title">Sign Up</string>
@@ -34,6 +35,8 @@
     <string name="missing_living_area">Living area is missing</string>
     <string name="missing_password">Password is missing</string>
     <string name="password_mismatch">Password mismatch</string>
+    <string name="sighn_up_password_hint">Password</string>
+    <string name="sighn_up_re_password_hint">Verify Password</string>
 
     <!-- Send My Details Activity -->
     <string name="send_my_details_title">Send Details</string>
@@ -75,5 +78,8 @@
     <string name="studies_certification_title">Bagrot</string>
     <string name="studies_call_me_button_text">Call Me</string>
     <string name="missing_domain">Missing Study Domain</string>
+    <string name="studies_how_take_advantage_of_pikadon">How would you like to use the Pikadon?</string>
+    <string name="studies_search_by_countries">Search by Countries</string>
+    <string name="sighn_up_already_registered">Already a member? Login</string>
 
 </resources>

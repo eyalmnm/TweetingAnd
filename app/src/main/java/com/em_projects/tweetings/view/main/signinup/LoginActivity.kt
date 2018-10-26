@@ -28,6 +28,7 @@ class LoginActivity : AppCompatActivity() {
         //FacebookSdk.sdkInitialize(this.getApplicationContext());
         setContentView(R.layout.activity_login)
         Log.d(TAG, "onCreate")
+        context = this
 
         loginPasswordEditText.setOnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEND) {

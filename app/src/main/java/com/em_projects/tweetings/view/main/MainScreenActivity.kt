@@ -63,7 +63,16 @@ class MainScreenActivity : AppCompatActivity() {
                 }
             }
         } else if (requestCode == SHOW_SIGN_UP_ACTIVITY) {
-            TODO("not implemented")
+            if (resultCode == Activity.RESULT_OK) {
+                TODO("not implemented")
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
+                    var intent = Intent(context, LoginActivity::class.java)
+                    startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
+                    showExitDialog()
+                }
+            }
         }
     }
 

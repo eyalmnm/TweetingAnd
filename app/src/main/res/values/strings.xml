@@ -37,6 +37,7 @@
     <string name="password_mismatch">Password mismatch</string>
     <string name="sighn_up_password_hint">Password</string>
     <string name="sighn_up_re_password_hint">Verify Password</string>
+    <string name="sighn_up_already_registered">Already a member? <u>Login</u></string>
 
     <!-- Send My Details Activity -->
     <string name="send_my_details_title">Send Details</string>
@@ -80,6 +81,5 @@
     <string name="missing_domain">Missing Study Domain</string>
     <string name="studies_how_take_advantage_of_pikadon">How would you like to use the Pikadon?</string>
     <string name="studies_search_by_countries">Search by Countries</string>
-    <string name="sighn_up_already_registered">Already a member? Login</string>
 
 </resources>

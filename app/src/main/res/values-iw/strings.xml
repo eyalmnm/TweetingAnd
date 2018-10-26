@@ -36,7 +36,7 @@
     <string name="password_mismatch">אין תאימות בין הסיסמאות</string>
     <string name="sighn_up_password_hint">סיסמה</string>
     <string name="sighn_up_re_password_hint">אימות סיסמה</string>
-    <string name="sighn_up_already_registered">כבר רשומים? כניסה</string>
+    <string name="sighn_up_already_registered">כבר רשומים? <u>כניסה</u></string>
 
     <!-- Send My Details Activity -->
     <string name="send_my_details_title">שליחת פרטים</string>

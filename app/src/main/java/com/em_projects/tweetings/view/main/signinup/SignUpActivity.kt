@@ -74,15 +74,15 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun sendSignUpData() {
-        var name: String = signUpNameEditText.text.toString()
-        var phone: String = signUpPhoneEditText.text.toString()
-        var email: String = signUpEmailEditText.text.toString()
-        var joinDate: Long = date
-        var livingArea: String = area
-        var password: String = input_password.text.toString()
-        var rePassword: String = input_reEnterPassword.text.toString()
-        var acceptEula: Boolean = signUpAcceptEula.isChecked
-        var acceptOffer: Boolean = signUpAcceptOffers.isChecked
+        val name = signUpNameEditText.text.toString()
+        val phone: String = signUpPhoneEditText.text.toString()
+        val email: String = signUpEmailEditText.text.toString()
+        val joinDate: Long = date
+        val livingArea: String = area
+        val password: String = input_password.text.toString()
+        val rePassword: String = input_reEnterPassword.text.toString()
+        val acceptEula: Boolean = signUpAcceptEula.isChecked
+        val acceptOffer: Boolean = signUpAcceptOffers.isChecked
         if (StringUtils.isNullOrEmpty(name)) {
             Toast.makeText(this, R.string.missing_name, Toast.LENGTH_LONG).show()
             return

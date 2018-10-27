@@ -81,4 +81,11 @@
     <string name="studies_how_take_advantage_of_pikadon">איך בא לך לנצל את הפיקדון?</string>
     <string name="studies_search_by_countries">חפש לפי איזור</string>
 
+    <!--Forget Password Activity-->
+    <string name="forget_password_title">שכחתי סיסמה</string>
+    <string name="forget_password_second_title">אנא הזינו את כתובת המייל שאיתו נרשמתם לשיחזור סיסמה</string>
+    <string name="forget_password_email_hint">דוא״ל</string>
+    <string name="forget_password_send_button_text">שלח</string>
+    <string name="forget_password_login_title"><u>מעבר לעמוד כניסה למערכת</u></string>
+
 </resources>

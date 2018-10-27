@@ -82,4 +82,11 @@
     <string name="studies_how_take_advantage_of_pikadon">How would you like to use the Pikadon?</string>
     <string name="studies_search_by_countries">Search by Countries</string>
 
+    <!--Forget Password Activity-->
+    <string name="forget_password_title">I forgot my password</string>
+    <string name="forget_password_second_title">Please enter your email for recovery your password</string>
+    <string name="forget_password_email_hint">Email</string>
+    <string name="forget_password_send_button_text">Send</string>
+    <string name="forget_password_login_title"><u>Back to login screen</u></string>
+
 </resources>

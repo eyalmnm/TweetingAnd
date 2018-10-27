@@ -42,10 +42,11 @@ dependencies {
     implementation 'pub.devrel:easypermissions:1.2.0'
 
     // ButterKnife Library
-    //implementation 'com.jakewharton:butterknife:8.8.1'
+    implementation 'com.jakewharton:butterknife:9.0.0-rc1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 
-    // Facebook Library
-    implementation 'com.facebook.android:facebook-login:4.33.0'
+    // Facebook Library (Do not upgrade)
+    implementation 'com.facebook.android:facebook-android-sdk:4.0.0'
 
     // Piccaso
     implementation 'com.squareup.picasso:picasso:2.5.2'

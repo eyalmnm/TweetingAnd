@@ -14,7 +14,7 @@
     <string name="login_no_account_title">No account yet? <u>Create one</u></string>
     <string name="login_forget_password_title">Forget Your Password? <u>Press Here!</u></string>
     <string name="login_login_button_text">Login</string>
-    <string name="facebook_app_id">421931941654435</string>
+    <string name="facebook_app_id" translatable="false">421931941654435</string>
 
     <!-- Sign Up Activity -->
     <string name="sign_up_title">Sign Up</string>

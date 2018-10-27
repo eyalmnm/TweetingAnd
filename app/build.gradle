@@ -59,7 +59,7 @@ dependencies {
 
     // ButterKnife Library
     implementation 'com.jakewharton:butterknife:9.0.0-rc1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
+    kapt 'com.jakewharton:butterknife-compiler:9.0.0-rc1'
 
     // Facebook Library (Do not upgrade)
     implementation 'com.facebook.android:facebook-android-sdk:4.14.1'

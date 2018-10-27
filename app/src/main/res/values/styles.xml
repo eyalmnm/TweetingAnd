@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/mainTextColor</item>
         <item name="android:typeface">serif</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:fontFamily">serif</item>
     </style>
 
     <style name="AppDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">

@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.model.drawerModels.OpeningOfferModel
 import com.em_projects.tweetings.view.main.menu.OfferHelper
-import com.squareup.picasso.Picasso
 
 class OfferFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class OfferFragment : Fragment() {
         var imageUrl: String? = args!!.get(OfferHelper.KEY_IMAGE_URI) as String?
 
         // Download the image and display it using Picasso
-        Picasso.with(activity)
+        Glide.with(activity!!)
                 .load(imageUrl)
                 .into(offerImageView)
 

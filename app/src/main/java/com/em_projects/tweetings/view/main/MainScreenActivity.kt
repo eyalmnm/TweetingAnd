@@ -13,6 +13,7 @@ import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
+import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
 import com.em_projects.tweetings.viewmodel.signinup.SignInViewModel
@@ -24,6 +25,7 @@ class MainScreenActivity : AppCompatActivity() {
 
     private val SHOW_LOGIN_ACTIVITY: Int = 123
     private val SHOW_SIGN_UP_ACTIVITY = SHOW_LOGIN_ACTIVITY + 1
+    private val SHOW_FORGET_PASSWORD_ACTIVITY = SHOW_SIGN_UP_ACTIVITY + 1
 
     private var context: Context? = null
 
@@ -59,6 +61,9 @@ class MainScreenActivity : AppCompatActivity() {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
                     var intent = Intent(context, SignUpActivity::class.java)
                     startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
+                    var intent = Intent(context, ForgetPwdActivity::class.java)
+                    startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
                     showExitDialog()
                 }
@@ -78,10 +83,20 @@ class MainScreenActivity : AppCompatActivity() {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
                     var intent = Intent(context, LoginActivity::class.java)
                     startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
+                    var intent = Intent(context, ForgetPwdActivity::class.java)
+                    startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
                     showExitDialog()
                 }
             }
+        } else if (requestCode == SHOW_FORGET_PASSWORD_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+                var email: String? = data?.getStringExtra(Constants.EMAIL)
+                signInViewModel!!.recoverPassword(email)
+            }
+            var intent = Intent(context, LoginActivity::class.java)
+            startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
         }
     }
 

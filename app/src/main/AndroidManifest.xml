@@ -62,6 +62,14 @@
             android:theme="@style/AppDialogTheme"
             android:windowSoftInputMode="adjustPan" />
 
+        <!-- Forget Password Activity -->
+        <activity
+            android:name=".view.main.signinup.ForgetPwdActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppDialogTheme"
+            android:windowSoftInputMode="adjustPan" />
+
         <!-- Drawer Activity -->
         <activity
             android:name=".view.main.menu.DrawerActivity"

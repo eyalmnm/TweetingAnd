@@ -71,6 +71,8 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         btn_signup.setOnClickListener { view ->
             sendSignUpData()
         }
+
+
     }
 
     private fun sendSignUpData() {

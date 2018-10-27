@@ -1,4 +1,4 @@
-package com.em_projects.tweetings.model.drawerModels;
+package com.em_projects.tweetings.model;
 
 public class DataWrapper<T> {
 

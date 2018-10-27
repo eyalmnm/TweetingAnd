@@ -2,6 +2,7 @@ package com.em_projects.tweetings.view.main
 
 import android.app.Activity
 import android.app.FragmentManager
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -14,7 +15,7 @@ import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
-import com.em_projects.tweetings.viewmodel.signinup.SignInViewModle
+import com.em_projects.tweetings.viewmodel.signinup.SignInViewModel
 
 // Ref: https://android--code.blogspot.com/2018/03/android-kotlin-navigation-drawer-example.html
 
@@ -26,13 +27,13 @@ class MainScreenActivity : AppCompatActivity() {
 
     private var context: Context? = null
 
-    private var signInViewModel: SignInViewModle? = null
+    private var signInViewModel: SignInViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_screen)
         Log.d(TAG, "onCreate")
-        signInViewModel = SignInViewModle(this)
+        signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java);
         context = this;
 
         continueLoading()
@@ -64,7 +65,15 @@ class MainScreenActivity : AppCompatActivity() {
             }
         } else if (requestCode == SHOW_SIGN_UP_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                TODO("not implemented")
+                var name: String? = data?.getStringExtra(Constants.NAME)
+                var phone: String? = data?.getStringExtra(Constants.PHONE)
+                var email: String? = data?.getStringExtra(Constants.EMAIL)
+                var joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
+                var livingArea: String? = data?.getStringExtra(Constants.LIVING_AREA)
+                var password: String? = data?.getStringExtra(Constants.PASSWORD)
+                var acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
+                var acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
+                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula, acceptOffer)
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
                     var intent = Intent(context, LoginActivity::class.java)

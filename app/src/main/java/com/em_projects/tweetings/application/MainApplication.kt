@@ -1,6 +1,8 @@
 package com.em_projects.tweetings.application
 
 import android.app.Application
+import android.content.Context
+import com.em_projects.tweetings.utils.LocaleHelper.onAttach
 import com.em_projects.tweetings.utils.TypefaceUtil
 
 
@@ -18,8 +20,8 @@ class MainApplication : Application() {
         TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/rubik_regular.otf")
     }
 
-//    protected override fun attachBaseContext(base: Context) {
-//        super.attachBaseContext(LocaleHelper.onAttach(base, DEFAULT_LANGUAGE))
-//    }
+    protected override fun attachBaseContext(base: Context) {
+        super.attachBaseContext(onAttach(base, DEFAULT_LANGUAGE))
+    }
 
 }

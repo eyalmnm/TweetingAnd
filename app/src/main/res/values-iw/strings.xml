@@ -88,4 +88,6 @@
     <string name="forget_password_send_button_text">שלח</string>
     <string name="forget_password_login_title"><u>מעבר לעמוד כניסה למערכת</u></string>
 
+    <!-- Forget Password Dialog -->
+    <string name="details_sent_successfully">נתונים נשלחו בהצלחה</string>
 </resources>

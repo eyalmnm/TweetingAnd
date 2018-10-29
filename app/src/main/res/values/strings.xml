@@ -89,4 +89,7 @@
     <string name="forget_password_send_button_text">Send</string>
     <string name="forget_password_login_title"><u>Back to login screen</u></string>
 
+    <!-- Forget Password Dialog -->
+    <string name="details_sent_successfully">Details sent successfully</string>
+
 </resources>

@@ -38,10 +38,6 @@ class MainScreenActivity : AppCompatActivity() {
         signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java);
         context = this;
 
-        continueLoading()
-    }
-
-    private fun continueLoading() {
         if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
             var intent = Intent(context, LoginActivity::class.java)
             startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)

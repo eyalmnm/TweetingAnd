@@ -9,7 +9,7 @@ import android.os.Message
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.ProgressBar
-import com.em_projects.tweetings.view.main.MainScreenActivity
+import com.em_projects.tweetings.view.main.menu.DrawerActivity
 
 
 // Ref: https://stackoverflow.com/questions/5745814/android-change-horizontal-progress-bar-color
@@ -56,7 +56,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToNextScreen() {
-        var intent: Intent = Intent(context, MainScreenActivity::class.java)
+//        var intent: Intent = Intent(context, MainScreenActivity::class.java)
+        var intent: Intent = Intent(context, DrawerActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         startActivity(intent)
         overridePendingTransition(R.anim.activity_slide_in, R.anim.activity_slide_out)

@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.app_bar_drawer.*
 
 // Ref: https://developer.android.com/training/implementing-navigation/nav-drawer#OpenClose
 // Ref: https://stackoverflow.com/questions/32774757/add-custom-layout-to-toolbar
+// Ref: https://stackoverflow.com/questions/35547074/how-to-change-the-color-of-the-drawer-icon-in-toolbar
 
 class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,6 +25,8 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer)
         setSupportActionBar(toolbar)
+        toolbar.setNavigationIcon(R.drawable.rounded_rectangle_2);
+//        toolbar.getNavigationIcon()!!.setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
 
         /*fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -34,6 +37,7 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        toggle.drawerArrowDrawable.color = resources.getColor(android.R.color.black)
 
         drawer_layout.addDrawerListener(
                 object : DrawerLayout.DrawerListener {
@@ -61,7 +65,6 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         var headerTextView = navView.findViewById<TextView>(R.id.headerTextView)
         var text1 = headerTextView.text
         Log.d("TAG", text1.toString())
-        headerTextView.text = "My Header Text Test"
 
         nav_view.setNavigationItemSelectedListener(this)
 

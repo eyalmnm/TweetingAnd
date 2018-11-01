@@ -6,19 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.model.drawerModels.OpeningOfferModel
 import com.em_projects.tweetings.view.main.menu.OfferHelper
 
 class OfferFragment : Fragment() {
+    private val TAG: String = "OfferFragment"
+
+    // UI Components
+    lateinit var offerBenefitsLayout: LinearLayout
+    lateinit var offerStudiesLayout: LinearLayout
+    lateinit var offerWorksLayout: LinearLayout
+    lateinit var offerFacebookLinkImageView: ImageView
+    lateinit var offerInstegramLinkImageView: ImageView
+    lateinit var offerYouTubeLinkImageView: ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
     Bundle?): View? {
 
         // Creates the view controlled by the fragment
         val view = inflater.inflate(R.layout.fragment_offer, container, false)
+        return view
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         var offerImageView = view.findViewById<ImageView>(R.id.offerImageView)
 
         // Retrieve and display the movie data from the Bundle
@@ -30,7 +43,6 @@ class OfferFragment : Fragment() {
                 .load(imageUrl)
                 .into(offerImageView)
 
-        return view
     }
 
     companion object {

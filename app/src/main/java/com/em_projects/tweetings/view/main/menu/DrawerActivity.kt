@@ -1,7 +1,9 @@
 package com.em_projects.tweetings.view.main.menu
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.NavigationView
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -12,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
 import com.em_projects.tweetings.R
+import com.em_projects.tweetings.view.main.menu.fragments.OfferFragment
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.app_bar_drawer.*
 
@@ -20,6 +23,12 @@ import kotlinx.android.synthetic.main.app_bar_drawer.*
 // Ref: https://stackoverflow.com/questions/35547074/how-to-change-the-color-of-the-drawer-icon-in-toolbar
 
 class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private val TAG = "DrawerActivity"
+
+    // Fragment Constants
+    private val OFFER_FRAGMENT: Int = 1
+
+    private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +37,7 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         toolbar.setNavigationIcon(R.drawable.rounded_rectangle_2);
 //        toolbar.getNavigationIcon()!!.setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
 
-        /*fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }*/
+        handler = Handler(mainLooper)
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -59,7 +65,6 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 }
         )
 
-
         // Binding component in the Header
         var navView = nav_view.getHeaderView(0)
         var headerTextView = navView.findViewById<TextView>(R.id.headerTextView)
@@ -75,6 +80,34 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 navMenu.getItem(i).setEnabled(false)
             }
         }
+
+        loadFragment(OFFER_FRAGMENT)
+    }
+
+    private fun loadFragment(fragmentCode: Int) {
+        val fragment: Fragment? = getFragmentByCode(fragmentCode);
+        if (fragment != null) {
+            val pendingRunnable = Runnable {
+                // update the main content by replacing fragments
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                        android.R.anim.fade_out)
+                fragmentTransaction.replace(R.id.contentContainer, fragment, fragment.javaClass.simpleName)
+                fragmentTransaction.commitAllowingStateLoss()
+            }
+
+            if (pendingRunnable != null) {
+                handler.post(pendingRunnable);
+            }
+        }
+    }
+
+    private fun getFragmentByCode(fragmentCode: Int): Fragment? {
+        if (fragmentCode == OFFER_FRAGMENT) {
+            return OfferFragment()
+        }
+        // TODO
+        return null
     }
 
     override fun onBackPressed() {

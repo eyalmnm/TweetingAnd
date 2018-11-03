@@ -28,11 +28,12 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/login_title_text_size" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/closeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:background="@color/white"
                 android:src="@drawable/round_close_black_18" />
         </LinearLayout>
 

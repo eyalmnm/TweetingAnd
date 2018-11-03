@@ -7,12 +7,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.support.design.internal.NavigationMenuView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -36,6 +38,9 @@ import kotlinx.android.synthetic.main.app_bar_drawer.*
 // Ref: https://developer.android.com/training/implementing-navigation/nav-drawer#OpenClose
 // Ref: https://stackoverflow.com/questions/32774757/add-custom-layout-to-toolbar
 // Ref: https://stackoverflow.com/questions/35547074/how-to-change-the-color-of-the-drawer-icon-in-toolbar
+// Ref: https://stackoverflow.com/questions/30621561/disable-icon-colorstatelist-in-navigationview/30632980#30632980
+// Ref: https://stackoverflow.com/questions/30625280/how-to-create-a-simple-divider-in-the-new-navigationview
+// Ref: https://stackoverflow.com/a/41478759/341497 - Vertical divider
 
 class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private val TAG = "DrawerActivity"
@@ -130,7 +135,12 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         navLogoutButton.setOnClickListener(this)
         closeDrawerButton.setOnClickListener(this)
 
+        // Cancel Android default tinting for display the icon original color
+        // https://stackoverflow.com/questions/30621561/disable-icon-colorstatelist-in-navigationview/30632980#30632980
+        nav_view.itemIconTintList = null
         nav_view.setNavigationItemSelectedListener(this)
+        var navMenuView: NavigationMenuView = nav_view.getChildAt(0) as NavigationMenuView
+        navMenuView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
 
         val navMenu = nav_view.menu
         for (i in 0 until navMenu.size()) {

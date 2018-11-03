@@ -8,6 +8,10 @@
 
     <color name="dialog_bg_color">#F6F6F6</color>
 
+    <!-- Color must be seted eventhough icon is colored -->
+    <color name="menu_items_icon_color">#ffad2b</color>
+    <color name="menu_items_text_color">#505e00</color>
+
     <!-- General Colors -->
     <color name="white">#ffffffff</color>
     <color name="light_gray">#FFCCCCCC</color>

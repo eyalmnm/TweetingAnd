@@ -18,7 +18,7 @@
             android:title="@string/nav_jobs" />
         <item
             android:id="@+id/nav_contact_us"
-            android:icon="@drawable/invalid_name"
+            android:icon="@drawable/contact_us"
             android:title="@string/nav_contact" />
         <item
             android:id="@+id/nav_conditions"
@@ -26,7 +26,7 @@
             android:title="@string/nav_condition" />
         <item
             android:id="@+id/nav_ad"
-            android:icon="@drawable/ellipse_1"
+            android:icon="@drawable/ad_icon"
             android:title="@string/nav_ad_here" />
     </group>
 

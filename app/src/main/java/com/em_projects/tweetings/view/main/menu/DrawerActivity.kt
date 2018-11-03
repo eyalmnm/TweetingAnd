@@ -1,5 +1,10 @@
 package com.em_projects.tweetings.view.main.menu
 
+import android.app.Activity
+import android.app.FragmentManager
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.design.widget.NavigationView
@@ -12,9 +17,19 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.em_projects.tweetings.R
+import com.em_projects.tweetings.config.Constants
+import com.em_projects.tweetings.config.Dynamic
+import com.em_projects.tweetings.utils.StringUtils
+import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.menu.fragments.OfferFragment
+import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
+import com.em_projects.tweetings.view.main.signinup.LoginActivity
+import com.em_projects.tweetings.view.main.signinup.SignUpActivity
+import com.em_projects.tweetings.viewmodel.signinup.SignInViewModel
 import kotlinx.android.synthetic.main.activity_drawer.*
 import kotlinx.android.synthetic.main.app_bar_drawer.*
 
@@ -22,8 +37,20 @@ import kotlinx.android.synthetic.main.app_bar_drawer.*
 // Ref: https://stackoverflow.com/questions/32774757/add-custom-layout-to-toolbar
 // Ref: https://stackoverflow.com/questions/35547074/how-to-change-the-color-of-the-drawer-icon-in-toolbar
 
-class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     private val TAG = "DrawerActivity"
+
+    private val SHOW_LOGIN_ACTIVITY: Int = 123
+    private val SHOW_SIGN_UP_ACTIVITY = SHOW_LOGIN_ACTIVITY + 1
+    private val SHOW_FORGET_PASSWORD_ACTIVITY = SHOW_SIGN_UP_ACTIVITY + 1
+
+    private var context: Context? = null
+
+    private var signInViewModel: SignInViewModel? = null
+
+    // Buttons layouts
+    private lateinit var nav_new_user: View
+    private lateinit var nav_exist_user: View
 
     // Fragment Constants
     private val OFFER_FRAGMENT: Int = 1
@@ -33,9 +60,13 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer)
+        Log.d(TAG, "onCreate")
         setSupportActionBar(toolbar)
         toolbar.setNavigationIcon(R.drawable.rounded_rectangle_2);
 //        toolbar.getNavigationIcon()!!.setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
+
+        signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java);
+        context = this;
 
         handler = Handler(mainLooper)
 
@@ -47,34 +78,62 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
         drawer_layout.addDrawerListener(
                 object : DrawerLayout.DrawerListener {
+
                     override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                        Log.d("TAG", "onDrawerSlide")
                     }
 
                     override fun onDrawerOpened(drawerView: View) {
-                        Log.d("TAG", "onDrawerOpened")
+                        Log.d(TAG, "onDrawerOpened")
                     }
 
                     override fun onDrawerClosed(drawerView: View) {
-                        Log.d("TAG", "onDrawerClosed")
+                        Log.d(TAG, "onDrawerClosed")
                     }
 
                     override fun onDrawerStateChanged(newState: Int) {
-                        Log.d("TAG", "onDrawerStateChanged")
+                        Log.d(TAG, "onDrawerStateChanged")
+                        if (newState == DrawerLayout.STATE_DRAGGING) {
+                            Log.d(TAG, "onDrawerStateChanged -> DRAGGING")
+                        } else if (newState == DrawerLayout.STATE_IDLE) {
+                            Log.d(TAG, "onDrawerStateChanged -> IDLE")
+                            if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
+                                nav_new_user.visibility = View.VISIBLE
+                                nav_exist_user.visibility = View.GONE
+                            } else {
+                                nav_new_user.visibility = View.GONE
+                                nav_exist_user.visibility = View.VISIBLE
+                            }
+                        } else if (newState == DrawerLayout.STATE_SETTLING) {
+                            Log.d(TAG, "onDrawerStateChanged -> SETTLING")
+                        }
                     }
                 }
         )
 
         // Binding component in the Header
-        var navView = nav_view.getHeaderView(0)
-        var headerTextView = navView.findViewById<TextView>(R.id.headerTextView)
-        var text1 = headerTextView.text
+        val navView = nav_view.getHeaderView(0)
+        val headerTextView = navView.findViewById<TextView>(R.id.headerTextView)
+        val text1 = headerTextView.text
         Log.d("TAG", text1.toString())
+        nav_new_user = navView.findViewById(R.id.nav_new_user)
+        nav_exist_user = navView.findViewById(R.id.nav_exist_user)
+        val navLoginButton = navView.findViewById<Button>(R.id.navLoginButton)
+        val navRegisterButton = navView.findViewById<Button>(R.id.navRegisterButton)
+        val navPersonalButton = navView.findViewById<Button>(R.id.navPersonalButton)
+        val navLogoutButton = navView.findViewById<Button>(R.id.navLogoutButton)
+        val closeDrawerButton = navView.findViewById<ImageButton>(R.id.closeDrawerButton)
+
+        // Set listener to Header's button
+        navLoginButton.setOnClickListener(this)
+        navRegisterButton.setOnClickListener(this)
+        navPersonalButton.setOnClickListener(this)
+        navLogoutButton.setOnClickListener(this)
+        closeDrawerButton.setOnClickListener(this)
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        var navMenu = nav_view.menu
-        for (i in 0..navMenu.size() - 1) {
+        val navMenu = nav_view.menu
+        for (i in 0 until navMenu.size()) {
             Log.d("TAG", navMenu.getItem(i).title.toString())
             if (navMenu.getItem(i).title.toString().equals("Second")) {
                 navMenu.getItem(i).setEnabled(false)
@@ -82,6 +141,29 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
 
         loadFragment(OFFER_FRAGMENT)
+    }
+
+    override fun onClick(view: View?) {
+        when (view!!.id) {
+            R.id.navLoginButton -> {
+                val intent = Intent(context, LoginActivity::class.java)
+                startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
+            }
+            R.id.navRegisterButton -> {
+                val intent = Intent(context, SignUpActivity::class.java)
+                startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
+            }
+            R.id.navPersonalButton -> {
+                // TODO
+            }
+            R.id.navLogoutButton -> {
+                showExitDialog()
+            }
+            R.id.closeDrawerButton -> {
+                drawer_layout.closeDrawers()
+            }
+        }
+        drawer_layout.closeDrawers();
     }
 
     private fun loadFragment(fragmentCode: Int) {
@@ -96,9 +178,7 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 fragmentTransaction.commitAllowingStateLoss()
             }
 
-            if (pendingRunnable != null) {
-                handler.post(pendingRunnable);
-            }
+            handler.post(pendingRunnable)
         }
     }
 
@@ -108,6 +188,61 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
         // TODO
         return null
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == SHOW_LOGIN_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+                val email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
+                val password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
+                signInViewModel?.login(email, password)
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
+                    val intent = Intent(context, SignUpActivity::class.java)
+                    startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
+                    val intent = Intent(context, ForgetPwdActivity::class.java)
+                    startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
+                    // showExitDialog()
+                }
+            }
+        } else if (requestCode == SHOW_SIGN_UP_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+                val name: String? = data?.getStringExtra(Constants.NAME)
+                val phone: String? = data?.getStringExtra(Constants.PHONE)
+                val email: String? = data?.getStringExtra(Constants.EMAIL)
+                val joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
+                val livingArea: String? = data?.getStringExtra(Constants.LIVING_AREA)
+                val password: String? = data?.getStringExtra(Constants.PASSWORD)
+                val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
+                val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
+                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula, acceptOffer)
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
+                    val intent = Intent(context, LoginActivity::class.java)
+                    startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
+                    val intent = Intent(context, ForgetPwdActivity::class.java)
+                    startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
+                } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
+                    // showExitDialog()
+                }
+            }
+        } else if (requestCode == SHOW_FORGET_PASSWORD_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+                val email: String? = data?.getStringExtra(Constants.EMAIL)
+                signInViewModel!!.recoverPassword(email)
+            }
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
+        }
+    }
+
+    private fun showExitDialog() {
+        val fragmentManager: FragmentManager = getFragmentManager()
+        val appExitDialog = AppExitDialog()
+        appExitDialog.show(fragmentManager, "AppExitDialog")
     }
 
     override fun onBackPressed() {

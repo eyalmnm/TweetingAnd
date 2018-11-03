@@ -10,10 +10,8 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.em_projects.tweetings.R;
+import com.em_projects.tweetings.config.Dynamic;
 
-/**
- * Created by eyalmuchtar on 16/10/2017.
- */
 
 public class AppExitDialog extends DialogFragment implements View.OnClickListener {
 
@@ -41,6 +39,7 @@ public class AppExitDialog extends DialogFragment implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (R.id.okButton == view.getId()) {
+            Dynamic.Companion.setUuid(null);
             System.exit(0);
         }
         dismiss();

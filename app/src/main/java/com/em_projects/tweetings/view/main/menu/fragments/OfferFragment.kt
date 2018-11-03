@@ -36,12 +36,14 @@ class OfferFragment : Fragment() {
 
         // Retrieve and display the movie data from the Bundle
         val args = arguments
-        var imageUrl: String? = args!!.get(OfferHelper.KEY_IMAGE_URI) as String?
+        if (args != null) {
+            var imageUrl: String? = args!!.get(OfferHelper.KEY_IMAGE_URI) as String?
 
-        // Download the image and display it using Picasso
-        Glide.with(activity!!)
-                .load(imageUrl)
-                .into(offerImageView)
+            // Download the image and display it using Picasso
+            Glide.with(activity!!)
+                    .load(imageUrl)
+                    .into(offerImageView)
+        }
 
     }
 

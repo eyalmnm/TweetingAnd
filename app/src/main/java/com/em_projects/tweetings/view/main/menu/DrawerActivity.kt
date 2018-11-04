@@ -16,7 +16,6 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -27,7 +26,8 @@ import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
-import com.em_projects.tweetings.view.main.menu.fragments.OfferFragment
+import com.em_projects.tweetings.view.main.menu.fragments.BenefitsFragment
+import com.em_projects.tweetings.view.main.menu.fragments.HomeFragment
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
@@ -59,6 +59,7 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     // Fragment Constants
     private val OFFER_FRAGMENT: Int = 1
+    private val BENEFITS_FRAGMENT: Int = 2
 
     private lateinit var handler: Handler
 
@@ -79,7 +80,8 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-        toggle.drawerArrowDrawable.color = resources.getColor(android.R.color.black)
+        toggle.drawerArrowDrawable.color = resources.getColor(R.color.hamburger_color) // Change Color of hamburger
+        nav_view.setBackgroundResource(R.color.white); // Changing navigation view bg color
 
         drawer_layout.addDrawerListener(
                 object : DrawerLayout.DrawerListener {
@@ -88,19 +90,14 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                     }
 
                     override fun onDrawerOpened(drawerView: View) {
-                        Log.d(TAG, "onDrawerOpened")
                     }
 
                     override fun onDrawerClosed(drawerView: View) {
-                        Log.d(TAG, "onDrawerClosed")
                     }
 
                     override fun onDrawerStateChanged(newState: Int) {
-                        Log.d(TAG, "onDrawerStateChanged")
                         if (newState == DrawerLayout.STATE_DRAGGING) {
-                            Log.d(TAG, "onDrawerStateChanged -> DRAGGING")
                         } else if (newState == DrawerLayout.STATE_IDLE) {
-                            Log.d(TAG, "onDrawerStateChanged -> IDLE")
                             if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
                                 nav_new_user.visibility = View.VISIBLE
                                 nav_exist_user.visibility = View.GONE
@@ -109,7 +106,6 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                                 nav_exist_user.visibility = View.VISIBLE
                             }
                         } else if (newState == DrawerLayout.STATE_SETTLING) {
-                            Log.d(TAG, "onDrawerStateChanged -> SETTLING")
                         }
                     }
                 }
@@ -194,7 +190,9 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
 
     private fun getFragmentByCode(fragmentCode: Int): Fragment? {
         if (fragmentCode == OFFER_FRAGMENT) {
-            return OfferFragment()
+            return HomeFragment()
+        } else if (fragmentCode == BENEFITS_FRAGMENT) {
+            return BenefitsFragment()
         }
         // TODO
         return null
@@ -263,42 +261,43 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.drawer, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.drawer, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        when (item.itemId) {
+//            R.id.action_settings -> return true
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_offers -> {
-                Log.d("TAG", "nav_offers")
+                Log.d(TAG, "nav_offers")
+                loadFragment(BENEFITS_FRAGMENT)
             }
             R.id.nav_studies -> {
-                Log.d("TAG", "nav_studies")
+                Log.d(TAG, "nav_studies")
             }
             R.id.nav_jobs -> {
-                Log.d("TAG", "nav_jobs")
+                Log.d(TAG, "nav_jobs")
             }
             R.id.nav_contact_us -> {
-                Log.d("TAG", "nav_contact_us")
+                Log.d(TAG, "nav_contact_us")
             }
             R.id.nav_conditions -> {
-                Log.d("TAG", "nav_conditions")
+                Log.d(TAG, "nav_conditions")
             }
             R.id.nav_ad -> {
-                Log.d("TAG", "nav_ad")
+                Log.d(TAG, "nav_ad")
             }
         }
 

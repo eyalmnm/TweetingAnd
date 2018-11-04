@@ -12,27 +12,26 @@ import com.em_projects.tweetings.R
 import com.em_projects.tweetings.model.drawerModels.OpeningOfferModel
 import com.em_projects.tweetings.view.main.menu.OfferHelper
 
-class OfferFragment : Fragment() {
-    private val TAG: String = "OfferFragment"
+class HomeFragment : Fragment() {
+    private val TAG: String = "HomeFragment"
 
     // UI Components
-    lateinit var offerBenefitsLayout: LinearLayout
-    lateinit var offerStudiesLayout: LinearLayout
-    lateinit var offerWorksLayout: LinearLayout
-    lateinit var offerFacebookLinkImageView: ImageView
-    lateinit var offerInstegramLinkImageView: ImageView
-    lateinit var offerYouTubeLinkImageView: ImageView
+    lateinit var homeBenefitsLayout: LinearLayout
+    lateinit var homeStudiesLayout: LinearLayout
+    lateinit var homeWorksLayout: LinearLayout
+    lateinit var homeFacebookLinkImageView: ImageView
+    lateinit var homeInstegramLinkImageView: ImageView
+    lateinit var homeYouTubeLinkImageView: ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState:
     Bundle?): View? {
-
         // Creates the view controlled by the fragment
-        val view = inflater.inflate(R.layout.fragment_offer, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var offerImageView = view.findViewById<ImageView>(R.id.offerImageView)
+        var offerImageView = view.findViewById<ImageView>(R.id.homeImageView)
 
         // Retrieve and display the movie data from the Bundle
         val args = arguments
@@ -49,7 +48,7 @@ class OfferFragment : Fragment() {
 
     companion object {
         // Method for creating new instances of the fragment
-        fun newInstance(offer: OpeningOfferModel): OfferFragment {
+        fun newInstance(offer: OpeningOfferModel): HomeFragment {
 
             // Store the movie data in a Bundle object
             val args = Bundle()
@@ -57,7 +56,7 @@ class OfferFragment : Fragment() {
 
             // Create a new MovieFragment and set the Bundle as the arguments
             // to be retrieved and displayed when the view is created
-            val fragment = OfferFragment()
+            val fragment = HomeFragment()
             fragment.arguments = args
             return fragment
         }

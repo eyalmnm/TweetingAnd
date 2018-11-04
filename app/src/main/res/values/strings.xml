@@ -92,4 +92,13 @@
     <!-- Forget Password Dialog -->
     <string name="details_sent_successfully">Details sent successfully</string>
 
+    <!-- Home Fragment Screen Strings -->
+    <string name="home_work_abroad">Work abroad</string>
+    <string name="home_studies">Studies</string>
+    <string name="home_benefits">Benefits</string>
+
+    <!-- Benefits Fragments Screen colors -->
+    <string name="benefit_brands_title_text">Brands and Networks</string>
+    <string name="benefit_locals_title_text">Local Businesses</string>
+
 </resources>

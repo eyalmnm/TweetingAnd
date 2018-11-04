@@ -90,4 +90,14 @@
 
     <!-- Forget Password Dialog -->
     <string name="details_sent_successfully">נתונים נשלחו בהצלחה</string>
+
+    <!-- Home Fragment Screen Strings -->
+    <string name="home_work_abroad">עבודה בחול</string>
+    <string name="home_studies">לימודים</string>
+    <string name="home_benefits">הטבות</string>
+
+    <!-- Benefits Fragments Screen Strings -->
+    <string name="benefit_brands_title_text">מותגים ורשתות</string>
+    <string name="benefit_locals_title_text">עסקים מקומיים</string>
+
 </resources>

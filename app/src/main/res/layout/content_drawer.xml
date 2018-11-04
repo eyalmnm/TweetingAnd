@@ -10,6 +10,11 @@
     tools:context=".view.main.menu.DrawerActivity"
     tools:showIn="@layout/app_bar_drawer">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/colorPrimary" />
+
     <FrameLayout
         android:id="@+id/contentContainer"
         android:layout_width="match_parent"

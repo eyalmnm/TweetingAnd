@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Change Text Color and background --><!-- Ref: https://stackoverflow.com/a/39611798/341497 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- pressed -->
+    <item android:color="@color/btn_text_pressed" android:drawable="@drawable/btn_bg_pressed" android:state_pressed="true" />
+
+    <!-- checked -->
+    <item android:color="@color/btn_text_pressed" android:drawable="@drawable/btn_bg_pressed" android:state_checked="true" />
+
+    <!-- focused -->
+    <item android:color="@color/btn_text_focused" android:drawable="@drawable/btn_bg_focused" android:state_focused="true" />
+
+    <!-- default -->
+    <item android:color="@color/btn_text_default" android:drawable="@drawable/btn_bg_default" />
+</selector>

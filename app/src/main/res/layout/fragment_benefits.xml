@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/benefitsBusinessTypeRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/benefitsBrandsAndNetworksRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/benefits_title_text_color_selector"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:gravity="center"
+            android:text="@string/benefit_brands_title_text"
+            android:textColor="@drawable/benefits_title_text_color_selector"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/benefitsLocalsBusinessRadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/benefits_title_text_color_selector"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="@string/benefit_locals_title_text"
+            android:textColor="@drawable/benefits_title_text_color_selector"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <!-- Area name line place holder -->
+    <View
+        android:id="@+id/benefitsAreaName"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/benefitsBusinessTypeRadioGroup"
+        android:background="@color/white" />
+
+    <!-- All benefits line place holder -->
+    <View
+        android:id="@+id/benefitsAllBenefits"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@id/benefitsAreaName"
+        android:background="@color/white" />
+
+    <GridView
+        android:id="@+id/benefitsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/benefitsAllBenefits"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:numColumns="3" />
+
+</RelativeLayout>

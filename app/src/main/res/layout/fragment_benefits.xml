@@ -47,21 +47,42 @@
         android:layout_below="@id/benefitsBusinessTypeRadioGroup"
         android:background="@color/white" />
 
+    <View
+        android:id="@+id/benefitsAreaNameDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/benefitsAreaName"
+        android:background="@color/benefits_divider_color" />
+
     <!-- All benefits line place holder -->
     <View
         android:id="@+id/benefitsAllBenefits"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_below="@id/benefitsAreaName"
+        android:layout_below="@id/benefitsAreaNameDivider"
         android:background="@color/white" />
+
+    <View
+        android:id="@+id/benefitsAllBenefitsDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/benefitsAllBenefits"
+        android:background="@color/benefits_divider_color" />
 
     <GridView
         android:id="@+id/benefitsGridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/benefitsAllBenefits"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
+        android:layout_above="@+id/benefit_banner"
+        android:layout_below="@id/benefitsAllBenefitsDivider"
+        android:background="@color/benefits_frag_grid_bg_color"
         android:numColumns="3" />
 
+    <ImageView
+        android:id="@id/benefit_banner"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_banner" />
 </RelativeLayout>

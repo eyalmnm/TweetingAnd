@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/studiesFormLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dialog_bg_color"
+                android:paddingBottom="20dp">
+
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                    android:id="@+id/studiesScreenTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dialog_bg_color"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:text="@string/studies_screen_title"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+
+                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                    android:id="@+id/worksNameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/studiesScreenTitle"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:hint="@string/studies_full_name_hint"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/mainTextColor"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                    android:id="@+id/worksPhoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/worksNameEditText"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:hint="@string/works_phone_number_hint"
+                    android:inputType="phone"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/mainTextColor"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                    android:id="@+id/workAgeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/worksPhoneEditText"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:hint="@string/work_age_hint"
+                    android:inputType="number"
+                    android:textColor="@color/mainTextColor"
+                    android:textColorHint="@color/mainTextColor"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <Spinner
+                    android:id="@+id/workAreaSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/workAgeText"
+                    android:layout_marginTop="20dp" />
+
+                <Spinner
+                    android:id="@+id/worDomainSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/workAreaSpinner"
+                    android:layout_marginTop="20dp" />
+
+                <Spinner
+                    android:id="@+id/worCitizenshipSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/worDomainSpinner"
+                    android:layout_marginTop="20dp" />
+
+                <Spinner
+                    android:id="@+id/worVisaSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/worCitizenshipSpinner"
+                    android:layout_marginTop="20dp" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
+                    android:id="@+id/sendMyDetailsAcceptEula"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/worVisaSpinner"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/sign_up_accept"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
+                    android:id="@+id/sendMyDetailsAcceptOffers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/sendMyDetailsAcceptEula"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/sign_up_offers"
+                    android:textColor="@color/mainTextColor"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomButton
+                    android:id="@+id/worksFindForMeButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/sendMyDetailsAcceptOffers"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="@string/work_find_for_me"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/studiesFormLayout"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_green_bg_image"
+                    android:gravity="center"
+                    android:text="@string/studies_search_by_location"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomButton
+                    android:id="@+id/workInUSA"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/studies_location_usa"
+                    android:gravity="center"
+                    android:text="@string/studies_usa"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomButton
+                    android:id="@+id/workInAustralia"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/studies_location_usa"
+                    android:gravity="center"
+                    android:text="@string/studies_australia"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomButton
+                    android:id="@+id/studiesInUK"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/studies_location_usa"
+                    android:gravity="center"
+                    android:text="@string/studies_other"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomButton
+                    android:id="@+id/studiesInCanada"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/studies_location_usa"
+                    android:gravity="center"
+                    android:text="@string/studies_other"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_green_bg_image"
+                    android:gravity="center"
+                    android:text="@string/studies_information"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sign_up_check_box_title_text_size"
+                    app:custom_font="opensanshebrew-regular-webfont" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/dialog_bg_color"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/app_green_text_color" />
+
+                        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/studies_information"
+                            android:textColor="@color/app_green_text_color"
+                            android:textSize="@dimen/sign_up_check_box_title_text_size"
+                            app:custom_font="opensanshebrew-regular-webfont" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/dialog_bg_color"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/app_green_text_color" />
+
+                        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/studies_information"
+                            android:textColor="@color/app_green_text_color"
+                            android:textSize="@dimen/sign_up_check_box_title_text_size"
+                            app:custom_font="opensanshebrew-regular-webfont" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/dialog_bg_color"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/app_green_text_color" />
+
+                        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/studies_information"
+                            android:textColor="@color/app_green_text_color"
+                            android:textSize="@dimen/sign_up_check_box_title_text_size"
+                            app:custom_font="opensanshebrew-regular-webfont" />
+
+                    </LinearLayout>
+
+                    <Space
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/dialog_bg_color"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@color/app_green_text_color" />
+
+                        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/studies_information"
+                            android:textColor="@color/app_green_text_color"
+                            android:textSize="@dimen/sign_up_check_box_title_text_size"
+                            app:custom_font="opensanshebrew-regular-webfont" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>

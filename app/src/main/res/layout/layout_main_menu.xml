@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="270dp"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--Header View-->
+    <include
+        layout="@layout/nav_header_drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <!--Benefits Menu Item-->
+    <RelativeLayout
+        android:id="@+id/benefitsMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/benefitsMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/benfits_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/benefitsMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/benefitsMenuIconImageView"
+            android:layout_toRightOf="@id/benefitsMenuIconImageView"
+            android:text="@string/nav_offers"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+    <!--Studies Menu Item-->
+    <RelativeLayout
+        android:id="@+id/studiesMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/studiesMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/studies_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/studiesMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/studiesMenuIconImageView"
+            android:layout_toRightOf="@id/studiesMenuIconImageView"
+            android:text="@string/nav_studies"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+    <!--Works Menu Item-->
+    <RelativeLayout
+        android:id="@+id/worksMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/worksMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/works_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/worksMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/worksMenuIconImageView"
+            android:layout_toRightOf="@id/worksMenuIconImageView"
+            android:text="@string/nav_jobs"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+    <!--Contact Us Menu Item-->
+    <RelativeLayout
+        android:id="@+id/contactMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/contactMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/contact_us_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/contactMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/contactMenuIconImageView"
+            android:layout_toRightOf="@id/contactMenuIconImageView"
+            android:text="@string/nav_contact"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+    <!--Condition Menu Item-->
+    <RelativeLayout
+        android:id="@+id/agreementMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/agreementMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/agreement_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/agreementMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/agreementMenuIconImageView"
+            android:layout_toRightOf="@id/agreementMenuIconImageView"
+            android:text="@string/nav_condition"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+    <!--Ad Menu Item-->
+    <RelativeLayout
+        android:id="@+id/adMenuItem"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <ImageView
+            android:id="@+id/adMenuIconImageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/ad_menu_icon" />
+
+        <com.em_projects.tweetings.ui.custom_text.CustomTextView
+            android:id="@+id/adMenuTitleImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/adMenuIconImageView"
+            android:layout_toRightOf="@id/adMenuIconImageView"
+            android:text="@string/nav_ad_here"
+            android:textColor="@color/app_green_text_color"
+            android:textSize="17dp"
+            app:custom_font="opensanshebrew-regular-webfont" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/munu_header_btn_bg_color" />
+
+    </RelativeLayout>
+
+</LinearLayout>

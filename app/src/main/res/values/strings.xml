@@ -101,4 +101,23 @@
     <string name="benefit_brands_title_text">Brands and Networks</string>
     <string name="benefit_locals_title_text">Local Businesses</string>
 
+    <!-- Studies Fragments Screen colors -->
+    <string name="studies_screen_title">Confused? Don\'t know what to learn? fill the form and our consultent will call you</string>
+    <string name="studies_full_name_hint">Full Name</string>
+    <string name="studies_domain_name_hint">What would you like to learn?</string>
+    <string name="studies_living_area_hint">Living Arae</string>
+    <string name="studies_talk_to_me">Talk To Me</string>
+    <string name="studies_using_the_pikadon">How would you like to take advantage of the deposit?</string>
+    <string name="studies_psichometrics">Psichometric</string>
+    <string name="studies_search_by_location">Search By Loacation</string>
+    <string name="studies_usa">USA</string>
+    <string name="studies_australia">Australia</string>
+    <string name="studies_other">Other</string>
+    <string name="studies_information">Information</string>
+
+    <!-- Work Fragments Screen colors -->
+    <string name="works_phone_number_hint">Phone</string>
+    <string name="work_age_hint">Age</string>
+    <string name="work_find_for_me">Find A Job For Me</string>
+
 </resources>

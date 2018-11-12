@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/hue_saturation_1">
 
     <RadioGroup
         android:id="@+id/benefitsBusinessTypeRadioGroup"
@@ -40,12 +41,14 @@
     </RadioGroup>
 
     <!-- Area name line place holder -->
-    <View
+    <TextView
         android:id="@+id/benefitsAreaName"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_below="@id/benefitsBusinessTypeRadioGroup"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="Filer By Area name" />
 
     <View
         android:id="@+id/benefitsAreaNameDivider"
@@ -55,12 +58,14 @@
         android:background="@color/benefits_divider_color" />
 
     <!-- All benefits line place holder -->
-    <View
+    <TextView
         android:id="@+id/benefitsAllBenefits"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_below="@id/benefitsAreaNameDivider"
-        android:background="@color/white" />
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="Filer By Categories" />
 
     <View
         android:id="@+id/benefitsAllBenefitsDivider"

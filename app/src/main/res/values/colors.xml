@@ -11,10 +11,11 @@
 
     <!-- Color must be seted eventhough icon is colored -->
     <color name="menu_items_icon_color">#ffad2b</color>
-    <color name="menu_items_text_color">#505e00</color>
+    <color name="app_green_text_color">#505e00</color>
     <color name="munu_header_btn_bg_color">#EEEEEE</color>
 
     <!-- General Colors -->
+    <color name="black">#000000</color>
     <color name="white">#ffffff</color>
     <color name="light_gray">#FFCCCCCC</color>
 
@@ -30,5 +31,7 @@
     <color name="btn_text_default">#ffffff</color>
     <color name="benefits_frag_grid_bg_color">#f5f5f5</color>
     <color name="benefits_divider_color">#d8d8d8</color>
+
+    <!-- Studies Fragment Screen colors -->
 
 </resources>

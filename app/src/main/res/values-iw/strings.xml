@@ -100,4 +100,23 @@
     <string name="benefit_brands_title_text">מותגים ורשתות</string>
     <string name="benefit_locals_title_text">עסקים מקומיים</string>
 
+    <!-- Studies Fragments Screen Strings -->
+    <string name="studies_screen_title">מתלבט? לא יודע מה ללמוד? השאר פרטים ויועץ לימודים יחזור אליך בחינם!</string>
+    <string name="studies_full_name_hint">שם מלא</string>
+    <string name="studies_domain_name_hint">מה תירצה ללמוד?</string>
+    <string name="studies_living_area_hint">איזור מגורים</string>
+    <string name="studies_talk_to_me">דברו איתי</string>
+    <string name="studies_using_the_pikadon">איך בא לך לנצל את הפיקדון?</string>
+    <string name="studies_psichometrics">פסיכומטרי</string>
+    <string name="studies_search_by_location">חיפוש לפי איזור</string>
+    <string name="studies_usa">ארה״ב</string>
+    <string name="studies_australia">אוסטרליה</string>
+    <string name="studies_other">אזור</string>
+    <string name="studies_information">מידע חשוב</string>
+
+    <!-- Work Fragments Screen colors -->
+    <string name="works_phone_number_hint">טלפון</string>
+    <string name="work_age_hint">גיל</string>
+    <string name="work_find_for_me">מצא לי עבודה</string>
+
 </resources>

@@ -38,7 +38,7 @@ class BenefitsFragment : Fragment() {
         Log.d(TAG, "onViewCreated")
 
         benefitsArrayList = ArrayList<BenefitModel>()
-        for (i in 0..11) {  // TODO remove this init
+        for (i in 0..20) {  // TODO remove this init
             benefitsArrayList.add(BenefitModel())
         }
 

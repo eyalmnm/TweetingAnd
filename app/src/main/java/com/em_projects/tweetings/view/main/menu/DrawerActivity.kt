@@ -7,33 +7,29 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.design.internal.NavigationMenuView
-import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.ImageView
+import com.em_projects.tweetings.BaseActivity
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
-import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.menu.fragments.BenefitsFragment
 import com.em_projects.tweetings.view.main.menu.fragments.HomeFragment
+import com.em_projects.tweetings.view.main.menu.fragments.MenuFragment
+import com.em_projects.tweetings.view.main.menu.fragments.StudiesFragment
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
 import com.em_projects.tweetings.viewmodel.signinup.SignInViewModel
 import kotlinx.android.synthetic.main.activity_drawer.*
-import kotlinx.android.synthetic.main.app_bar_drawer.*
+
 
 // Ref: https://developer.android.com/training/implementing-navigation/nav-drawer#OpenClose
 // Ref: https://stackoverflow.com/questions/32774757/add-custom-layout-to-toolbar
@@ -42,7 +38,7 @@ import kotlinx.android.synthetic.main.app_bar_drawer.*
 // Ref: https://stackoverflow.com/questions/30625280/how-to-create-a-simple-divider-in-the-new-navigationview
 // Ref: https://stackoverflow.com/a/41478759/341497 - Vertical divider
 
-class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+class DrawerActivity : BaseActivity(), View.OnClickListener {
     private val TAG = "DrawerActivity"
 
     private val SHOW_LOGIN_ACTIVITY: Int = 123
@@ -57,96 +53,113 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     private lateinit var nav_new_user: View
     private lateinit var nav_exist_user: View
 
+    // UI Components
+    lateinit var menuButton: ImageView
+    var isFragmentLoaded: Boolean = false
+    var menuFragment: MenuFragment? = null
+    var isAnimating: Boolean = false
+
     // Fragment Constants
     private val OFFER_FRAGMENT: Int = 1
     private val BENEFITS_FRAGMENT: Int = 2
+    private val STUDIES_FRAGMENT: Int = 3
 
     private lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_drawer)
+        initAddlayout(R.layout.activity_drawer)
         Log.d(TAG, "onCreate")
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationIcon(R.drawable.rounded_rectangle_2);
-//        toolbar.getNavigationIcon()!!.setColorFilter(Color.BLACK, PorterDuff.Mode.MULTIPLY)
+        context = this
 
-        signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java);
-        context = this;
-
-        handler = Handler(mainLooper)
-
-        val toggle = ActionBarDrawerToggle(
-                this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
-        toggle.drawerArrowDrawable.color = resources.getColor(R.color.hamburger_color) // Change Color of hamburger
-        nav_view.setBackgroundResource(R.color.white); // Changing navigation view bg color
-
-        drawer_layout.addDrawerListener(
-                object : DrawerLayout.DrawerListener {
-
-                    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-                    }
-
-                    override fun onDrawerOpened(drawerView: View) {
-                    }
-
-                    override fun onDrawerClosed(drawerView: View) {
-                    }
-
-                    override fun onDrawerStateChanged(newState: Int) {
-                        if (newState == DrawerLayout.STATE_DRAGGING) {
-                        } else if (newState == DrawerLayout.STATE_IDLE) {
-                            if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
-                                nav_new_user.visibility = View.VISIBLE
-                                nav_exist_user.visibility = View.GONE
-                            } else {
-                                nav_new_user.visibility = View.GONE
-                                nav_exist_user.visibility = View.VISIBLE
-                            }
-                        } else if (newState == DrawerLayout.STATE_SETTLING) {
-                        }
+        menuButton = findViewById(R.id.menu_icon)
+        menuButton.setOnClickListener { v ->
+            if (!isFragmentLoaded) {
+                showMenu()
+            } else {
+                if (menuFragment != null) {
+                    if (menuFragment!!.isAdded()) {
+                        hideMenu()
                     }
                 }
-        )
-
-        // Binding component in the Header
-        val navView = nav_view.getHeaderView(0)
-        val headerTextView = navView.findViewById<TextView>(R.id.headerTextView)
-        val text1 = headerTextView.text
-        Log.d("TAG", text1.toString())
-        nav_new_user = navView.findViewById(R.id.nav_new_user)
-        nav_exist_user = navView.findViewById(R.id.nav_exist_user)
-        val navLoginButton = navView.findViewById<Button>(R.id.navLoginButton)
-        val navRegisterButton = navView.findViewById<Button>(R.id.navRegisterButton)
-        val navPersonalButton = navView.findViewById<Button>(R.id.navPersonalButton)
-        val navLogoutButton = navView.findViewById<Button>(R.id.navLogoutButton)
-        val closeDrawerButton = navView.findViewById<ImageButton>(R.id.closeDrawerButton)
-
-        // Set listener to Header's button
-        navLoginButton.setOnClickListener(this)
-        navRegisterButton.setOnClickListener(this)
-        navPersonalButton.setOnClickListener(this)
-        navLogoutButton.setOnClickListener(this)
-        closeDrawerButton.setOnClickListener(this)
-
-        // Cancel Android default tinting for display the icon original color
-        // https://stackoverflow.com/questions/30621561/disable-icon-colorstatelist-in-navigationview/30632980#30632980
-        nav_view.itemIconTintList = null
-        nav_view.setNavigationItemSelectedListener(this)
-        var navMenuView: NavigationMenuView = nav_view.getChildAt(0) as NavigationMenuView
-        navMenuView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-
-        val navMenu = nav_view.menu
-        for (i in 0 until navMenu.size()) {
-            Log.d("TAG", navMenu.getItem(i).title.toString())
-            if (navMenu.getItem(i).title.toString().equals("Second")) {
-                navMenu.getItem(i).setEnabled(false)
             }
         }
 
+        // Bind "buttons"
+        nav_new_user = findViewById(R.id.nav_new_user)
+        nav_exist_user = findViewById(R.id.nav_exist_user)
+        findViewById<ImageButton>(R.id.closeDrawerButton).setOnClickListener(this)
+        findViewById<Button>(R.id.navLoginButton).setOnClickListener(this)
+        findViewById<Button>(R.id.navRegisterButton).setOnClickListener(this)
+        findViewById<Button>(R.id.navPersonalButton).setOnClickListener(this)
+        findViewById<Button>(R.id.navLogoutButton).setOnClickListener(this)
+        findViewById<View>(R.id.benefitsMenuItem).setOnClickListener(this)
+        findViewById<View>(R.id.studiesMenuItem).setOnClickListener(this)
+        findViewById<View>(R.id.worksMenuItem).setOnClickListener(this)
+        findViewById<View>(R.id.contactMenuItem).setOnClickListener(this)
+        findViewById<View>(R.id.agreementMenuItem).setOnClickListener(this)
+        findViewById<View>(R.id.adMenuItem).setOnClickListener(this)
+
+        signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
+
+        handler = Handler(mainLooper)
+
+        // Binding component in the Header
         loadFragment(OFFER_FRAGMENT)
+    }
+
+    private fun hideMenu() {
+        if (isFragmentLoaded && !isAnimating) {
+            var slideOutAnimation: Animation = AnimationUtils.loadAnimation(context, R.anim.activity_slide_out)
+            mainMenuLayout.startAnimation(slideOutAnimation)
+            slideOutAnimation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    isAnimating = false
+                    isFragmentLoaded = false
+                    mainMenuLayout.visibility = View.GONE
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                    isAnimating = true
+                }
+
+            })
+        }
+    }
+
+
+    private fun showMenu() {
+        if (!isFragmentLoaded && !isAnimating) {
+            mainMenuLayout.visibility = View.VISIBLE
+            if (Dynamic.uuid == null) {
+                nav_new_user.visibility = View.VISIBLE
+                nav_exist_user.visibility = View.GONE
+            } else {
+                nav_new_user.visibility = View.GONE
+                nav_exist_user.visibility = View.VISIBLE
+            }
+            var slideInAnimation: Animation = AnimationUtils.loadAnimation(context, R.anim.activity_slide_in)
+            mainMenuLayout.startAnimation(slideInAnimation)
+            slideInAnimation.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    isAnimating = false
+                    isFragmentLoaded = true
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                    isAnimating = true
+                }
+
+            })
+        }
     }
 
     override fun onClick(view: View?) {
@@ -160,16 +173,35 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
                 startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
             }
             R.id.navPersonalButton -> {
-                // TODO
             }
             R.id.navLogoutButton -> {
                 showExitDialog()
             }
             R.id.closeDrawerButton -> {
-                drawer_layout.closeDrawers()
+                hideMenu()
+            }
+            R.id.benefitsMenuItem -> {
+                Log.d(TAG, "nav_offers")
+                loadFragment(BENEFITS_FRAGMENT)
+            }
+            R.id.studiesMenuItem -> {
+                Log.d(TAG, "nav_studies")
+                loadFragment(STUDIES_FRAGMENT)
+            }
+            R.id.worksMenuItem -> {
+                Log.d(TAG, "nav_jobs")
+            }
+            R.id.contactMenuItem -> {
+                Log.d(TAG, "nav_contact_us")
+            }
+            R.id.agreementMenuItem -> {
+                Log.d(TAG, "nav_conditions")
+            }
+            R.id.adMenuItem -> {
+                Log.d(TAG, "nav_ad")
             }
         }
-        drawer_layout.closeDrawers();
+        hideMenu()
     }
 
     private fun loadFragment(fragmentCode: Int) {
@@ -193,6 +225,8 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
             return HomeFragment()
         } else if (fragmentCode == BENEFITS_FRAGMENT) {
             return BenefitsFragment()
+        } else if (fragmentCode == STUDIES_FRAGMENT) {
+            return StudiesFragment()
         }
         // TODO
         return null
@@ -254,54 +288,11 @@ class DrawerActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
     }
 
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
+        if (isFragmentLoaded == true) {
+            hideMenu()
         } else {
-            super.onBackPressed()
+//            super.onBackPressed()
+            showExitDialog()
         }
-    }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        menuInflater.inflate(R.menu.drawer, menu)
-//        return true
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        when (item.itemId) {
-//            R.id.action_settings -> return true
-//            else -> return super.onOptionsItemSelected(item)
-//        }
-//    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        when (item.itemId) {
-            R.id.nav_offers -> {
-                Log.d(TAG, "nav_offers")
-                loadFragment(BENEFITS_FRAGMENT)
-            }
-            R.id.nav_studies -> {
-                Log.d(TAG, "nav_studies")
-            }
-            R.id.nav_jobs -> {
-                Log.d(TAG, "nav_jobs")
-            }
-            R.id.nav_contact_us -> {
-                Log.d(TAG, "nav_contact_us")
-            }
-            R.id.nav_conditions -> {
-                Log.d(TAG, "nav_conditions")
-            }
-            R.id.nav_ad -> {
-                Log.d(TAG, "nav_ad")
-            }
-        }
-
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
     }
 }

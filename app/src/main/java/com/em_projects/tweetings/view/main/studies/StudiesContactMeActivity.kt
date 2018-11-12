@@ -62,9 +62,9 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
     }
 
     private fun sendCallMeData() {
-        val name: String = studiesNameEditText.text.toString()
+        val name: String = worksNameEditText.text.toString()
         val phone: String = studiesPhoneEditText.text.toString()
-        val domain: String = studiesDomainEditText.text.toString()
+        val domain: String = worksPhoneEditText.text.toString()
         val acceptEula: Boolean = studiesAcceptEula.isChecked
         val acceptOffer: Boolean = studiesAcceptOffers.isChecked
 

@@ -19,7 +19,7 @@ class StudiesFragment : Fragment(), AdapterView.OnItemSelectedListener {
     lateinit var studiesCertificationsSpinner: Spinner
     private var bagrutAdapter: SpinnerAdapter? = null
     private var bagrutTypes: ArrayList<String>? = null
-    private var bagrut: String = "Type A"
+    lateinit var bagrut: String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_studies, container, false)

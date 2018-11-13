@@ -20,10 +20,7 @@ import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
-import com.em_projects.tweetings.view.main.menu.fragments.BenefitsFragment
-import com.em_projects.tweetings.view.main.menu.fragments.HomeFragment
-import com.em_projects.tweetings.view.main.menu.fragments.MenuFragment
-import com.em_projects.tweetings.view.main.menu.fragments.StudiesFragment
+import com.em_projects.tweetings.view.main.menu.fragments.*
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
 import com.em_projects.tweetings.view.main.signinup.SignUpActivity
@@ -63,6 +60,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     private val OFFER_FRAGMENT: Int = 1
     private val BENEFITS_FRAGMENT: Int = 2
     private val STUDIES_FRAGMENT: Int = 3
+    private val WORKS_FRAGMENT: Int = 4
 
     private lateinit var handler: Handler
 
@@ -190,6 +188,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             }
             R.id.worksMenuItem -> {
                 Log.d(TAG, "nav_jobs")
+                loadFragment(WORKS_FRAGMENT)
             }
             R.id.contactMenuItem -> {
                 Log.d(TAG, "nav_contact_us")
@@ -227,6 +226,8 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             return BenefitsFragment()
         } else if (fragmentCode == STUDIES_FRAGMENT) {
             return StudiesFragment()
+        } else if (fragmentCode == WORKS_FRAGMENT) {
+            return WorkFragment()
         }
         // TODO
         return null

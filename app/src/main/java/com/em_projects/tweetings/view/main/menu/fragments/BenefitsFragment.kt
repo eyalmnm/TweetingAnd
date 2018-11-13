@@ -49,14 +49,14 @@ class BenefitsFragment : Fragment() {
         benefitsBusinessTypeRadioGroup.setOnCheckedChangeListener(
                 RadioGroup.OnCheckedChangeListener { group, checkedId ->
                     val radio: RadioButton = view.findViewById(checkedId)
-                    var text: String = "";
+                    var text: String = ""
                     if (radio.id == R.id.benefitsBrandsAndNetworksRadioButton) text = "BrandsAnd Networks"
                     if (radio.id == R.id.benefitsLocalsBusinessRadioButton) text = "Local Business"
                     Log.d(TAG, " On checked change : $text")
                 })
 
         // Bind and init the Grid View
-        benefitsGridView = view.findViewById(R.id.benefitsGridView);
+        benefitsGridView = view.findViewById(R.id.benefitsGridView)
         benefitsGridView.setOnItemClickListener { parent, view, position, id ->
             //            Toast.makeText(this, "Clicked item : $position",Toast.LENGTH_SHORT).show()
 //            Intent intent = new Intent(CurrentActivity.this, NextActivity::class.java)
@@ -88,7 +88,7 @@ class BenefitsFragment : Fragment() {
             if (aView == null) {
                 aView = LayoutInflater.from(context).inflate(R.layout.item_benefits_grid, null)
             }
-            return aView!!;
+            return aView!!
         }
     }
 }

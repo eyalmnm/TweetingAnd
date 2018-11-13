@@ -15,16 +15,23 @@
     </string-array>
 
     <string-array name="visa_array">
-        <item>Visa A</item>
-        <item>Visa B</item>
-        <item>Visa C</item>
-        <item>Visa D</item>
+        <item>ויזה א</item>
+        <item>ויזה ב</item>
+        <item>ויזה ג</item>
+        <item>ויזה ד</item>
     </string-array>
 
     <string-array name="bagrot_array">
-        <item>Type A</item>
-        <item>Type B</item>
-        <item>Type C</item>
-        <item>Type D</item>
+        <item>סוג א</item>
+        <item>סוג ב</item>
+        <item>סוג ג</item>
+        <item>סוג ד</item>
+    </string-array>
+
+    <string-array name="work_domain">
+        <item>פיתוח תוכנה</item>
+        <item>גרפיקה</item>
+        <item>פיתוח חומרה</item>
+        <item>אלקטרוניקה</item>
     </string-array>
 </resources>

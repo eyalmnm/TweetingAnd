@@ -38,7 +38,7 @@
                     app:custom_font="opensanshebrew-regular-webfont" />
 
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:id="@+id/worksNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:id="@+id/worksPhoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:id="@+id/workAgeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

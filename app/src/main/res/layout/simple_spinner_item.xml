@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.em_projects.tweetings.ui.custom_text.CustomTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/datTextView"
     style="?android:attr/spinnerItemStyle"
     android:layout_width="match_parent"
@@ -8,4 +9,5 @@
     android:singleLine="true"
     android:textAlignment="inherit"
     android:textColor="@color/mainTextColor"
-    android:textSize="@dimen/login_second_title_text_size" />
+    android:textSize="@dimen/login_second_title_text_size"
+    app:custom_font="opensanshebrew-regular-webfont" />

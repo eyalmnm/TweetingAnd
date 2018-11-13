@@ -27,4 +27,11 @@
         <item>Type C</item>
         <item>Type D</item>
     </string-array>
+
+    <string-array name="work_domain">
+        <item>Software</item>
+        <item>Graphics</item>
+        <item>Hardware</item>
+        <item>Elecronic</item>
+    </string-array>
 </resources>

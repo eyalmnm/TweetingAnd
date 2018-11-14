@@ -62,6 +62,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     private val STUDIES_FRAGMENT: Int = 3
     private val WORKS_FRAGMENT: Int = 4
     private val CONTACT_US_FRAGMENT: Int = 5
+    private val REGULATIONS_FRAGMENT: Int = 6
 
     private lateinit var handler: Handler
 
@@ -197,6 +198,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             }
             R.id.agreementMenuItem -> {
                 Log.d(TAG, "nav_conditions")
+                loadFragment(REGULATIONS_FRAGMENT)
             }
             R.id.adMenuItem -> {
                 Log.d(TAG, "nav_ad")
@@ -232,6 +234,8 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             return WorkFragment()
         } else if (fragmentCode == CONTACT_US_FRAGMENT) {
             return ContactUsFragment()
+        } else if (fragmentCode == REGULATIONS_FRAGMENT) {
+            return RegulationsFragment()
         }
         // TODO
         return null

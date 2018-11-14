@@ -120,4 +120,12 @@
     <string name="work_age_hint">Age</string>
     <string name="work_find_for_me">Find A Job For Me</string>
 
+    <!-- Contact Us Fragments Screen colors -->
+    <string name="contct_us_full_name">*Full Name</string>
+    <string name="contact_us_email">*Email</string>
+    <string name="contact_us_subject">*Subject</string>
+    <string name="contact_us_content">*Content</string>
+    <string name="contact_us_fields_msg">*Must</string>
+    <string name="contact_us_send">Send</string>
+
 </resources>

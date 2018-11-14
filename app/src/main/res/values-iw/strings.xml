@@ -119,4 +119,12 @@
     <string name="work_age_hint">גיל</string>
     <string name="work_find_for_me">מצא לי עבודה</string>
 
+    <!-- Work Fragments Screen colors -->
+    <string name="contct_us_full_name">*שם מלא</string>
+    <string name="contact_us_email">*דוא״ל</string>
+    <string name="contact_us_subject">*נושא</string>
+    <string name="contact_us_content">*תוכן ההודעה</string>
+    <string name="contact_us_fields_msg">*שדות חובה</string>
+    <string name="contact_us_send">שלח</string>
+
 </resources>

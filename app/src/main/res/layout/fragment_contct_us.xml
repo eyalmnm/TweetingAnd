@@ -84,7 +84,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@color/contact_us_edit_text_bg_color"
-            android:hint="@string/contact_us_content"
             android:text="@string/contact_us_fields_msg"
             android:textColor="@color/contact_us_title_text_color"
             android:textSize="16dp"

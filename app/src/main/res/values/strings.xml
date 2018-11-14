@@ -132,4 +132,10 @@
     <string name="regulation_title">Regulations</string>
     <string name="regulation_content">Content</string>
 
+    <!-- Ad Fragments Screen Strings -->
+    <string name="ad_ad_with_us">Ad With Us</string>
+    <string name="ad_sub_title_text">Text Text Text</string>
+    <string name="ad_form_title">Fill your details and we will contact you soon</string>
+    <string name="ad_customers">Among our customers</string>
+
 </resources>

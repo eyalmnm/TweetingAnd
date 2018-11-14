@@ -24,4 +24,7 @@
     <!-- Main Menu -->
     <dimen name="main_menu_button_width">130dp</dimen>
 
+    <!-- Ad Screen -->
+    <dimen name="ad_customer_image_view_size">100dp</dimen>
+
 </resources>

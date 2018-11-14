@@ -131,4 +131,10 @@
     <string name="regulation_title">תקנון האתר</string>
     <string name="regulation_content">תוכן התקנון</string>
 
+    <!-- Ad Fragments Screen Strings -->
+    <string name="ad_ad_with_us">פרסם אצלנו</string>
+    <string name="ad_sub_title_text">טקסט טקסט טקסט</string>
+    <string name="ad_form_title">לבירורים ומידע על פירסום באתר נא השאירו פרטיכם</string>
+    <string name="ad_customers">בין לקוחותינו</string>
+
 </resources>

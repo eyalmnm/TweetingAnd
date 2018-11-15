@@ -16,7 +16,7 @@ android {
 
         // App Constants
         buildConfigField "String", "SERVER_URL", SERVER_URL
-        buildConfigField "String", "SERVER_URL", APP_TOKEN
+        buildConfigField "String", "APP_TOKEN", APP_TOKEN
     }
     buildTypes {
         release {

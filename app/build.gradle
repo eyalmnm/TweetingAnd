@@ -9,13 +9,14 @@ android {
     defaultConfig {
         applicationId "com.em_projects.tweetings"
         minSdkVersion 18
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // App Constants
         buildConfigField "String", "SERVER_URL", SERVER_URL
+        buildConfigField "String", "SERVER_URL", APP_TOKEN
     }
     buildTypes {
         release {
@@ -46,8 +47,8 @@ dependencies {
 
     // Retrofit
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 
     // UI Additional

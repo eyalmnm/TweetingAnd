@@ -1,0 +1,64 @@
+
+////////////////////////////////////////////////////////
+///   dev web site                           ///
+///   http://isoldier.knk-project.ru/   ///
+////////////////////////////////////////////////////////
+
+------------------
+Login request:
+http://isoldier.co.il/api/login.php?token=34knknmcl3445lknnlFsome234kind&email=loveraven666@gmail.com&password=11
+
+Note: will return userkey which should be seaved leter on. widespread use of userkey
+
+------------------
+Logout request
+http://isoldier.knk-project.ru/api/logout.php?token=34knknmcl3445lknnlFsome234kind&userkey=76f12a127720b9a7c11ae75d21c31c7d
+
+Note: userkey - user identifier
+
+
+------------------
+Registration request
+http://isoldier.knk-project.ru/api/register.php?token=34knknmcl3445lknnlFsome234kind&email=mail@mail.ru&name=kap&phone=111&dateReg=2009-10-20&address=5%2012&password=test&password2=test&agree=1&agree2=1
+
+Note:
+for sex field (pas only number):
+    1 - male
+    2 - female
+
+for region field use "Regions request" (pas only number)
+
+
+------------------
+Regions request
+http://isoldier.co.il/api/regions.php?token=34knknmcl3445lknnlFsome234kind
+
+
+------------------
+Reset password request
+http://isoldier.co.il/api/restore.php?token=34knknmcl3445lknnlFsome234kind&email=mail@mail.ru
+
+
+------------------
+Edit user data request
+http://isoldier.co.il/api/userEdit.php?token=34knknmcl3445lknnlFsome234kind&email=loveraven666@gmail.com&name=Name&phone=111&dateReg=2009-10-20&address=5&password=11&newpassword1=11&newpassword2=11&sex=1&age=18&userkey=f0e1473d5ab08be185dca4036a8906f5
+
+Note: region and sex fields should return only numbers
+
+
+------------------
+User info request
+http://isoldier.co.il/api/userInfo.php?token=34knknmcl3445lknnlFsome234kind&userkey=d1206893b40f0160f0198f9b878720d2
+
+
+------------------
+Users business request (user account)
+http://isoldier.co.il/api/userLgoti.php?token=34knknmcl3445lknnlFsome234kind&userkey=d1206893b40f0160f0198f9b878720d2
+
+
+------------------
+Remove business request (from user account)
+http://isoldier.co.il/api/userLgotiRemove.php?token=34knknmcl3445lknnlFsome234kind&userkey=e0603c0c4c1d18982c8a03a8712bbb85&ids=86
+
+Note: ids - business id
+

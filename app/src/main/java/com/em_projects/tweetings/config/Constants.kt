@@ -6,6 +6,7 @@ class Constants {
     companion object {
 
         val TWEET_SERVER_URL = BuildConfig.SERVER_URL
+        val APP_TOKEN: String = BuildConfig.APP_TOKEN
 
         // General Actions
         val ACTION_OPERATION_CANCELLED = "action_operation_cancelled"

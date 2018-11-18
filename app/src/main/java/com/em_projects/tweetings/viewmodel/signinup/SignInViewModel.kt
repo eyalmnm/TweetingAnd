@@ -21,4 +21,8 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         TODO("not implemented") // Show *Forgot Password2* screen as results for successfully sending email
     }
+
+    fun getRegionsList(): LiveData<DataWrapper<String>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

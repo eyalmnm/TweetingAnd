@@ -18,10 +18,18 @@
         android:layout_below="@id/appBarDrawer"
         android:layout_alignParentBottom="true" />
 
+    <View
+        android:id="@+id/screenShadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/semi_transparent"
+        android:visibility="gone" />
+
     <include
         android:id="@+id/mainMenuLayout"
         layout="@layout/layout_main_menu"
         android:layout_height="match_parent"
         android:layout_width="270dp"
         android:visibility="gone" />
+
 </RelativeLayout>

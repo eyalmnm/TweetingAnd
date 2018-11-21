@@ -14,6 +14,9 @@
     <color name="app_green_text_color">#505e00</color>
     <color name="munu_header_btn_bg_color">#EEEEEE</color>
 
+    <!-- Activity Drawer colors -->
+    <color name="semi_transparent">#BB000000</color>
+
     <!-- General Colors -->
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>

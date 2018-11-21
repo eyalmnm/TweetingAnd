@@ -17,8 +17,9 @@
     <RelativeLayout
         android:id="@+id/benefitsMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
+        android:layout_marginTop="9dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 
@@ -57,7 +58,7 @@
     <RelativeLayout
         android:id="@+id/studiesMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
@@ -97,7 +98,7 @@
     <RelativeLayout
         android:id="@+id/worksMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
@@ -137,7 +138,7 @@
     <RelativeLayout
         android:id="@+id/contactMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
@@ -177,7 +178,7 @@
     <RelativeLayout
         android:id="@+id/agreementMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
@@ -217,7 +218,7 @@
     <RelativeLayout
         android:id="@+id/adMenuItem"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">

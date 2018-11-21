@@ -55,6 +55,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     var isFragmentLoaded: Boolean = false
     var menuFragment: MenuFragment? = null
     var isAnimating: Boolean = false
+    lateinit var screenShadow: View
 
     // Fragment Constants
     private val OFFER_FRAGMENT: Int = 1
@@ -73,6 +74,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
         Log.d(TAG, "onCreate")
         context = this
 
+        screenShadow = findViewById(R.id.screenShadow)
         menuButton = findViewById(R.id.menu_icon)
         menuButton.setOnClickListener { v ->
             if (!isFragmentLoaded) {
@@ -122,10 +124,12 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                     isAnimating = false
                     isFragmentLoaded = false
                     mainMenuLayout.visibility = View.GONE
+                    screenShadow.visibility = View.GONE
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
                     isAnimating = true
+                    screenShadow.visibility = View.GONE
                 }
 
             })
@@ -157,6 +161,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
 
                 override fun onAnimationStart(animation: Animation?) {
                     isAnimating = true
+                    screenShadow.visibility = View.VISIBLE
                 }
 
             })

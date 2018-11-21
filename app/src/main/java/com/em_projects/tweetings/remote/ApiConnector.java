@@ -17,11 +17,11 @@ public interface ApiConnector {
                               @Query("email") String email,
                               @Query("password") String password);
 
-    @GET("http://isoldier.knk-project.ru/api/logout.php")
+    @GET("api/logout.php")
     Call<String> logoutRequest(@Query("token") String token,
                                @Query("userkey") String userkey);
 
-    @GET("http://isoldier.knk-project.ru/api/register.php")
+    @GET("api/register.php")
     Call<String> registrationRequest(@Query("token") String token,
                                      @Query("email") String email,
                                      @Query("name") String name,

@@ -15,13 +15,16 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         // App Constants
-        buildConfigField "String", "SERVER_URL", SERVER_URL
         buildConfigField "String", "APP_TOKEN", APP_TOKEN
     }
     buildTypes {
         release {
+            buildConfigField "String", "SERVER_URL", SERVER_URL
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "String", "SERVER_URL", DEV_SERVER_URL
         }
     }
 }

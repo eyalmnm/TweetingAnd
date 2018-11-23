@@ -41,14 +41,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="58dp"
                 android:background="@color/colorPrimary" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/rectangle_1_copy" />
         </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>

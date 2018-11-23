@@ -18,6 +18,13 @@
         android:layout_below="@id/appBarDrawer"
         android:layout_alignParentBottom="true" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/rectangle_1_copy" />
+
     <View
         android:id="@+id/screenShadow"
         android:layout_width="match_parent"

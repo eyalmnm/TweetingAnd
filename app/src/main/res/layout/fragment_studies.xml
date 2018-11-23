@@ -29,6 +29,8 @@
                     android:id="@+id/studiesScreenTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
                     android:background="@color/dialog_bg_color"
                     android:gravity="center"
                     android:lines="2"
@@ -38,23 +40,25 @@
                     app:custom_font="opensanshebrew-regular-webfont" />
 
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/studiesNameEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
                     android:layout_below="@id/studiesScreenTitle"
-                    android:layout_marginTop="20dp"
+                    android:paddingStart="10dp"
                     android:background="@color/white"
                     android:hint="@string/studies_full_name_hint"
-                    android:textColor="@color/mainTextColor"
+                    android:textColor="@color/white"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/studiesDomainNameEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingStart="10dp"
                     android:layout_below="@id/studiesNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
@@ -64,10 +68,11 @@
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <com.em_projects.tweetißngs.ui.custom_text.CustomEditText
+                <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/StudiesLivingAreaEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:paddingStart="10dp"
                     android:layout_below="@id/studiesDomainNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
@@ -80,14 +85,16 @@
                 <Spinner
                     android:id="@+id/studiesCertificationsSpinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:background="@color/white"
+                    android:paddingStart="10dp"
                     android:layout_below="@id/StudiesLivingAreaEditText"
                     android:layout_marginTop="20dp" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
                     android:id="@+id/sendMyDetailsAcceptEula"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_below="@id/studiesCertificationsSpinner"
                     android:layout_marginTop="20dp"
                     android:text="@string/sign_up_accept"
@@ -98,7 +105,7 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
                     android:id="@+id/sendMyDetailsAcceptOffers"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_below="@id/sendMyDetailsAcceptEula"
                     android:layout_marginTop="10dp"
                     android:text="@string/sign_up_offers"

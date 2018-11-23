@@ -86,7 +86,6 @@
                     android:id="@+id/workAreaSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/white"
                     android:layout_below="@id/workAgeText"
                     android:layout_marginTop="20dp" />
 
@@ -94,7 +93,6 @@
                     android:id="@+id/worDomainSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/white"
                     android:layout_below="@id/workAreaSpinner"
                     android:layout_marginTop="20dp" />
 
@@ -102,7 +100,6 @@
                     android:id="@+id/worCitizenshipSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/white"
                     android:layout_below="@id/worDomainSpinner"
                     android:layout_marginTop="20dp" />
 
@@ -110,7 +107,6 @@
                     android:id="@+id/worVisaSpinner"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@color/white"
                     android:layout_below="@id/worCitizenshipSpinner"
                     android:layout_marginTop="20dp" />
 

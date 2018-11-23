@@ -12,4 +12,5 @@
     android:textAlignment="inherit"
     android:textColor="@color/mainTextColor"
     android:textSize="@dimen/login_second_title_text_size"
+    android:background="@color/white"
     app:custom_font="opensanshebrew-regular-webfont" />

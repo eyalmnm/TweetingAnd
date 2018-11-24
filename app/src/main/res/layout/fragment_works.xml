@@ -42,11 +42,11 @@
                     android:id="@+id/worksNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/studiesScreenTitle"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:hint="@string/studies_full_name_hint"
+                    android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
@@ -56,12 +56,12 @@
                     android:id="@+id/worksPhoneEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/worksNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:hint="@string/works_phone_number_hint"
                     android:inputType="phone"
+                    android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
@@ -71,50 +71,78 @@
                     android:id="@+id/workAgeText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/worksPhoneEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:hint="@string/work_age_hint"
                     android:inputType="number"
+                    android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <Spinner
-                    android:id="@+id/workAreaSpinner"
+                <LinearLayout
+                    android:id="@+id/workAreaSpinnerWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_below="@id/workAgeText"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
 
-                <Spinner
-                    android:id="@+id/worDomainSpinner"
+                    <Spinner
+                        android:id="@+id/workAreaSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/worDomainSpinnerWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@id/workAreaSpinner"
-                    android:layout_marginTop="20dp" />
+                    android:layout_below="@id/workAreaSpinnerWrapper"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
 
-                <Spinner
-                    android:id="@+id/worCitizenshipSpinner"
+                    <Spinner
+                        android:id="@+id/worDomainSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/worCitizenshipSpinnerWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@id/worDomainSpinner"
-                    android:layout_marginTop="20dp" />
+                    android:layout_below="@id/worDomainSpinnerWrapper"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
 
-                <Spinner
-                    android:id="@+id/worVisaSpinner"
+                    <Spinner
+                        android:id="@+id/worCitizenshipSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/worVisaSpinnerWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@id/worCitizenshipSpinner"
-                    android:layout_marginTop="20dp" />
+                    android:layout_below="@id/worCitizenshipSpinnerWrapper"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
+
+                    <Spinner
+                        android:id="@+id/worVisaSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp" />
+                </LinearLayout>
 
                 <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
                     android:id="@+id/sendMyDetailsAcceptEula"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@id/worVisaSpinner"
+                    android:layout_below="@id/worVisaSpinnerWrapper"
                     android:layout_marginTop="20dp"
                     android:text="@string/sign_up_accept"
                     android:textColor="@color/mainTextColor"

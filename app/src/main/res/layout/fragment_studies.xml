@@ -29,11 +29,11 @@
                     android:id="@+id/studiesScreenTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingStart="5dp"
-                    android:paddingEnd="5dp"
                     android:background="@color/dialog_bg_color"
                     android:gravity="center"
                     android:lines="2"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
                     android:text="@string/studies_screen_title"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
@@ -44,11 +44,11 @@
                     android:id="@+id/studiesNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginTop="5dp"
                     android:layout_below="@id/studiesScreenTitle"
-                    android:paddingStart="10dp"
+                    android:layout_marginTop="5dp"
                     android:background="@color/white"
                     android:hint="@string/studies_full_name_hint"
+                    android:paddingStart="10dp"
                     android:textColor="@color/white"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
@@ -58,11 +58,11 @@
                     android:id="@+id/studiesDomainNameEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/studiesNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:hint="@string/studies_domain_name_hint"
+                    android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
@@ -72,29 +72,36 @@
                     android:id="@+id/StudiesLivingAreaEditText"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/studiesDomainNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
                     android:hint="@string/studies_living_area_hint"
+                    android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
                     android:textColorHint="@color/mainTextColor"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
-                <Spinner
-                    android:id="@+id/studiesCertificationsSpinner"
+                <LinearLayout
+                    android:id="@+id/studiesCertificationsSpinnerWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:paddingStart="10dp"
                     android:layout_below="@id/StudiesLivingAreaEditText"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white">
+
+                    <Spinner
+                        android:id="@+id/studiesCertificationsSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:paddingStart="10dp" />
+                </LinearLayout>
 
                 <com.em_projects.tweetings.ui.custom_text.CustomCheckBox
                     android:id="@+id/sendMyDetailsAcceptEula"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@id/studiesCertificationsSpinner"
+                    android:layout_below="@id/studiesCertificationsSpinnerWrapper"
                     android:layout_marginTop="20dp"
                     android:text="@string/sign_up_accept"
                     android:textColor="@color/mainTextColor"

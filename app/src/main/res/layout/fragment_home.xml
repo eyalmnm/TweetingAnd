@@ -4,29 +4,36 @@
     android:layout_height="match_parent"
     android:background="@drawable/hue_saturation_1"
     android:orientation="vertical"
-    android:weightSum="3">
+    android:weightSum="3.25">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1.25">
 
         <ImageView
             android:id="@+id/homeImageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="380dp"
+            android:layout_height="270dp"
             android:scaleType="fitXY"
             android:src="@drawable/layer_4" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:background="@drawable/home_frag_offer_text_bg"
             android:gravity="center"
-            android:text="Temporary Text and Style"
+            android:text="כותרת של ההטבה"
             android:textColor="@color/white" />
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/pager_view_indicators" />
+    <!--android:background="@color/pager_view_indicators_bg_color"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,9 +45,9 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:paddingLeft="20dp"
-            android:paddingTop="30dp"
+            android:paddingTop="10dp"
             android:paddingRight="20dp"
-            android:paddingBottom="30dp">
+            android:paddingBottom="15dp">
 
             <LinearLayout
                 android:id="@+id/homeBenefitsLayout"
@@ -61,15 +68,15 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:background="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="@string/home_benefits"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -98,15 +105,15 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:background="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="@string/home_studies"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -136,15 +143,15 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="5dp"
                     android:background="@color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="2dp"
                     android:text="@string/home_work_abroad"
                     android:textColor="@color/white"
                     android:textStyle="bold" />
@@ -186,7 +193,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:scaleType="fitXY"
         android:src="@drawable/home_banner" />
 

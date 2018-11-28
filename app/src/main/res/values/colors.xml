@@ -28,6 +28,9 @@
     <!--color name="colorFAB_pressed">#e0e0e0</color-->
     <!--color name="colorFAB_pressed">@color/windowBackground</color-->
 
+    <!-- Home Fragment colors -->
+    <color name="pager_view_indicators_bg_color">#edeeea</color>
+
     <!-- Benefits Fragments Screen colors -->
     <color name="btn_text_pressed">#ffdc89</color>
     <color name="btn_text_focused">@color/btn_text_pressed</color>

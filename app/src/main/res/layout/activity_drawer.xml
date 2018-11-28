@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="-7dp"
         android:src="@drawable/rectangle_1_copy" />
 
     <View

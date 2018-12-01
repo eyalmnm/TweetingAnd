@@ -82,7 +82,7 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/adFullNameEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/contact_us_edit_text_bg_color"
                     android:hint="@string/contct_us_full_name"
@@ -94,7 +94,7 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/adEmailEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/contact_us_edit_text_bg_color"
                     android:hint="@string/contact_us_email"
@@ -107,7 +107,7 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/adSubjectEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/contact_us_edit_text_bg_color"
                     android:hint="@string/contact_us_subject"
@@ -120,7 +120,7 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/adContentEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="20dp"
                     android:background="@color/contact_us_edit_text_bg_color"
                     android:gravity="top"

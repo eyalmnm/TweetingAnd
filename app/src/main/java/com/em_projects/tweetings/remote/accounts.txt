@@ -1,0 +1,10 @@
+Account_1
+email: Soldier_001@mailinator.com
+name: Soldier_001
+phone: 0525555134
+dateReg: 2018-10-20
+address: Hashmonaim 70 tel aviv
+password: password
+password2: password
+agree: 1
+agree2: 1

@@ -1,5 +1,9 @@
 package com.em_projects.tweetings.remote;
 
+import com.em_projects.tweetings.model.RegionModel;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -34,7 +38,7 @@ public interface ApiConnector {
                                      @Query("agree2") int agree2);
 
     @GET("api/regions.php")
-    Call<String> regionsRequest(@Query("token") String token);
+    Call<List<RegionModel>> regionsRequest(@Query("token") String token);
 
     @GET("api/restore.php")
     Call<String> passwordResetRequest(@Query("token") String token,

@@ -116,6 +116,7 @@
     <string name="studies_information">Information</string>
 
     <!-- Work Fragments Screen Strings -->
+    <string name="works_screen_title">Fill your details for jobs offers</string>
     <string name="works_phone_number_hint">Phone</string>
     <string name="work_age_hint">Age</string>
     <string name="work_find_for_me">Find A Job For Me</string>

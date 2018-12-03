@@ -18,8 +18,8 @@
         android:id="@+id/benefitsMenuItem"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:gravity="center_vertical"
         android:layout_marginTop="9dp"
+        android:gravity="center_vertical"
         android:paddingLeft="10dp"
         android:paddingRight="10dp">
 

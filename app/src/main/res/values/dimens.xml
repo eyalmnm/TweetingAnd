@@ -26,5 +26,6 @@
 
     <!-- Ad Screen -->
     <dimen name="ad_customer_image_view_size">100dp</dimen>
+    <dimen name="banner_height">60dp</dimen>
 
 </resources>

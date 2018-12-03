@@ -115,6 +115,7 @@
     <string name="studies_information">מידע חשוב</string>
 
     <!-- Work Fragments Screen Strings -->
+    <string name="works_screen_title">לקבלת הצעות עבודה בחו״ל מלאו את פרטיכם</string>
     <string name="works_phone_number_hint">טלפון</string>
     <string name="work_age_hint">גיל</string>
     <string name="work_find_for_me">מצא לי עבודה</string>

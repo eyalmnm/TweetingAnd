@@ -41,24 +41,24 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/studiesNameEditText"
                     style="@style/inputFieldStyle"
-                    android:layout_marginTop="5dp"
                     android:layout_below="@id/studiesScreenTitle"
+                    android:layout_marginTop="5dp"
                     android:hint="@string/studies_full_name_hint"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/studiesDomainNameEditText"
                     style="@style/inputFieldStyle"
-                    android:layout_marginTop="20dp"
                     android:layout_below="@id/studiesNameEditText"
+                    android:layout_marginTop="20dp"
                     android:hint="@string/studies_domain_name_hint"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/StudiesLivingAreaEditText"
                     style="@style/inputFieldStyle"
-                    android:layout_marginTop="20dp"
                     android:layout_below="@id/studiesDomainNameEditText"
+                    android:layout_marginTop="20dp"
                     android:hint="@string/studies_living_area_hint"
                     app:custom_font="opensanshebrew-regular-webfont" />
 
@@ -117,7 +117,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sign_up_check_box_title_text_size"
-                app:custom_font="opensanshebrew-regular-webfont" />
+                android:textStyle="bold"
+                app:custom_font="opensanshebrew-bold-webfont" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,8 +126,8 @@
                 android:layout_below="@id/studiesTalkToMeButton"
                 android:layout_marginTop="20dp"
                 android:background="@color/white"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="20dp">
@@ -134,14 +135,15 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_green_bg_image"
                     android:gravity="center"
-                    android:layout_marginTop="20dp"
                     android:text="@string/studies_using_the_pikadon"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    android:textStyle="bold"
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesPsichometricButton"
@@ -154,7 +156,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesPsichometricOtherButton"
@@ -167,7 +169,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesPsichometricOtherTwoButton"
@@ -180,7 +182,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesPsichometricOtherThreeButton"
@@ -193,9 +195,9 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
-                <com.em_projects.tweetings.ui.custom_text.CustomTextView
+                <!--com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
@@ -391,7 +393,7 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </LinearLayout-->
 
             </LinearLayout>
         </RelativeLayout>

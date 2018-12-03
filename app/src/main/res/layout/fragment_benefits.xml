@@ -15,7 +15,7 @@
         <RadioButton
             android:id="@+id/benefitsBrandsAndNetworksRadioButton"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/benefits_title_text_color_selector"
             android:button="@android:color/transparent"
@@ -29,7 +29,7 @@
         <RadioButton
             android:id="@+id/benefitsLocalsBusinessRadioButton"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/benefits_title_text_color_selector"
             android:button="@android:color/transparent"
@@ -44,11 +44,11 @@
     <TextView
         android:id="@+id/benefitsAreaName"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_below="@id/benefitsBusinessTypeRadioGroup"
         android:background="@color/white"
         android:gravity="center"
-        android:text="Filer By Area name" />
+        android:text="איזור סינון לפי איזור" />
 
     <View
         android:id="@+id/benefitsAreaNameDivider"
@@ -61,11 +61,11 @@
     <TextView
         android:id="@+id/benefitsAllBenefits"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="40dp"
         android:layout_below="@id/benefitsAreaNameDivider"
         android:background="@color/white"
         android:gravity="center"
-        android:text="Filer By Categories" />
+        android:text="איזור סינון לפי קטגוריה" />
 
     <View
         android:id="@+id/benefitsAllBenefitsDivider"
@@ -81,12 +81,16 @@
         android:layout_above="@+id/benefit_banner"
         android:layout_below="@id/benefitsAllBenefitsDivider"
         android:background="@color/benefits_frag_grid_bg_color"
-        android:numColumns="3" />
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:verticalSpacing="5dp" />
 
     <ImageView
         android:id="@id/benefit_banner"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="@dimen/banner_height"
         android:layout_alignParentBottom="true"
         android:scaleType="fitXY"
         android:src="@drawable/home_banner" />

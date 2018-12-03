@@ -22,8 +22,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="start"
-                android:paddingEnd="5dp"
                 android:paddingStart="5dp"
+                android:paddingEnd="5dp"
                 android:text="@string/sign_up_title"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/login_title_text_size" />
@@ -47,8 +47,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingLeft="24dp"
-            android:paddingRight="24dp"
             android:paddingTop="10dp"
+            android:paddingRight="24dp"
             tools:ignore="ExtraText">
 
             <!--com.facebook.login.widget.LoginButton -->
@@ -57,10 +57,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:paddingBottom="15dp"
-                android:paddingTop="15dp" />
+                android:layout_marginBottom="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -87,8 +87,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <EditText
                     android:id="@+id/signUpNameEditText"
@@ -103,8 +103,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <EditText
                     android:id="@+id/signUpPhoneEditText"
@@ -119,8 +119,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <EditText
                     android:id="@+id/signUpEmailEditText"
@@ -135,8 +135,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <android.support.design.widget.TextInputLayout
@@ -166,8 +166,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 android:weightSum="1.5">
 
@@ -193,8 +193,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <EditText
                     android:id="@+id/input_password"
@@ -209,8 +209,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp">
 
                 <EditText
                     android:id="@+id/input_reEnterPassword"
@@ -225,8 +225,8 @@
                 android:id="@+id/signUpAcceptEula"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="2dp"
                 android:text="@string/sign_up_accept"
                 android:textColor="@color/mainTextColor"
                 android:textSize="@dimen/sign_up_check_box_title_text_size" />
@@ -235,8 +235,8 @@
                 android:id="@+id/signUpAcceptOffers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
                 android:text="@string/sign_up_offers"
                 android:textColor="@color/mainTextColor"
                 android:textSize="@dimen/sign_up_check_box_title_text_size" />
@@ -246,8 +246,8 @@
                 android:id="@+id/btn_signup"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@color/colorPrimary"
                 android:padding="12dp"
                 android:text="@string/sign_up_send_button_text"
@@ -258,8 +258,8 @@
                 android:id="@+id/link_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
                 android:gravity="center"
                 android:text="@string/sighn_up_already_registered"
                 android:textSize="16dip" />

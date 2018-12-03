@@ -23,15 +23,15 @@
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingTop="20dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="20dp">
+                android:paddingRight="20dp">
 
 
                 <ImageView
                     android:id="@+id/adTitleImageView"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:scaleType="centerInside" />
+                    android:scaleType="centerInside"
+                    android:src="@drawable/alfa_romeo_logo" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/contact_us_edit_text_bg_color"
+                    android:background="@drawable/contact_us_edit_text_bg_shape"
                     android:hint="@string/contct_us_full_name"
                     android:textColor="@color/contact_us_title_text_color"
                     android:textColorHint="@color/contact_us_title_text_color"
@@ -96,7 +96,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/contact_us_edit_text_bg_color"
+                    android:background="@drawable/contact_us_edit_text_bg_shape"
                     android:hint="@string/contact_us_email"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/contact_us_title_text_color"
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/contact_us_edit_text_bg_color"
+                    android:background="@drawable/contact_us_edit_text_bg_shape"
                     android:hint="@string/contact_us_subject"
                     android:inputType="textEmailSubject"
                     android:textColor="@color/contact_us_title_text_color"
@@ -120,9 +120,9 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomEditText
                     android:id="@+id/adContentEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="135dp"
                     android:layout_marginTop="20dp"
-                    android:background="@color/contact_us_edit_text_bg_color"
+                    android:background="@drawable/contact_us_edit_text_bg_shape"
                     android:gravity="top"
                     android:hint="@string/contact_us_content"
                     android:lines="5"

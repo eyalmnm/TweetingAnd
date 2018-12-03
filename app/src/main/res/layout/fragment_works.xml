@@ -9,6 +9,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:paddingTop="20dp"
         android:paddingBottom="20dp">
 
@@ -31,7 +33,7 @@
                     android:background="@color/dialog_bg_color"
                     android:gravity="center"
                     android:lines="2"
-                    android:text="@string/studies_screen_title"
+                    android:text="@string/works_screen_title"
                     android:textColor="@color/black"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
                     app:custom_font="opensanshebrew-regular-webfont" />
@@ -44,6 +46,7 @@
                     android:layout_below="@id/studiesScreenTitle"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
                     android:hint="@string/studies_full_name_hint"
                     android:paddingStart="10dp"
                     android:textColor="@color/mainTextColor"
@@ -58,6 +61,7 @@
                     android:layout_below="@id/worksNameEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
                     android:hint="@string/works_phone_number_hint"
                     android:inputType="phone"
                     android:paddingStart="10dp"
@@ -73,6 +77,7 @@
                     android:layout_below="@id/worksPhoneEditText"
                     android:layout_marginTop="20dp"
                     android:background="@color/white"
+                    android:gravity="center_vertical"
                     android:hint="@string/work_age_hint"
                     android:inputType="number"
                     android:paddingStart="10dp"
@@ -176,7 +181,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sign_up_check_box_title_text_size"
-                app:custom_font="opensanshebrew-regular-webfont" />
+                app:custom_font="opensanshebrew-bold-webfont" />
 
 
             <LinearLayout
@@ -184,8 +189,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/worksFindForMeButton"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
                 android:background="@color/white"
+                android:gravity="center"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -195,14 +200,14 @@
                 <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/button_green_bg_image"
                     android:gravity="center"
-                    android:layout_marginTop="20dp"
                     android:text="@string/studies_search_by_location"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/workInUSA"
@@ -215,7 +220,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/workInAustralia"
@@ -228,7 +233,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesInUK"
@@ -241,7 +246,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomButton
                     android:id="@+id/studiesInCanada"
@@ -254,7 +259,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <com.em_projects.tweetings.ui.custom_text.CustomTextView
                     android:layout_width="match_parent"
@@ -266,7 +271,7 @@
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:textSize="@dimen/sign_up_check_box_title_text_size"
-                    app:custom_font="opensanshebrew-regular-webfont" />
+                    app:custom_font="opensanshebrew-bold-webfont" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -295,7 +300,8 @@
                             android:text="@string/studies_information"
                             android:textColor="@color/app_green_text_color"
                             android:textSize="@dimen/sign_up_check_box_title_text_size"
-                            app:custom_font="opensanshebrew-regular-webfont" />
+                            android:textStyle="bold"
+                            app:custom_font="opensanshebrew-bold-webfont" />
 
                     </LinearLayout>
 
@@ -323,7 +329,8 @@
                             android:text="@string/studies_information"
                             android:textColor="@color/app_green_text_color"
                             android:textSize="@dimen/sign_up_check_box_title_text_size"
-                            app:custom_font="opensanshebrew-regular-webfont" />
+                            android:textStyle="bold"
+                            app:custom_font="opensanshebrew-bold-webfont" />
 
                     </LinearLayout>
 
@@ -356,7 +363,8 @@
                             android:text="@string/studies_information"
                             android:textColor="@color/app_green_text_color"
                             android:textSize="@dimen/sign_up_check_box_title_text_size"
-                            app:custom_font="opensanshebrew-regular-webfont" />
+                            android:textStyle="bold"
+                            app:custom_font="opensanshebrew-bold-webfont" />
 
                     </LinearLayout>
 
@@ -384,7 +392,8 @@
                             android:text="@string/studies_information"
                             android:textColor="@color/app_green_text_color"
                             android:textSize="@dimen/sign_up_check_box_title_text_size"
-                            app:custom_font="opensanshebrew-regular-webfont" />
+                            android:textStyle="bold"
+                            app:custom_font="opensanshebrew-bold-webfont" />
 
                     </LinearLayout>
 

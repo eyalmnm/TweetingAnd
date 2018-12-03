@@ -42,4 +42,6 @@
     <color name="contact_us_title_text_color">#909090</color>
     <color name="contact_us_edit_text_bg_color">#fcfcfc</color>
 
+    <color name="ad_with_us_bg_color">#dcdcdc</color>
+
 </resources>

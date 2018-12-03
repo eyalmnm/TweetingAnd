@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/AppTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="5dp"
     android:windowSoftInputMode="adjustResize|adjustPan">
 
-    <TextView
+    <com.em_projects.tweetings.ui.custom_text.CustomTextView
         android:id="@+id/captionTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center_horizontal"
         android:text="@string/exit_title"
         android:textColor="@color/mainTextColor"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        app:custom_font="opensanshebrew-regular-webfont" />
 
-    <TextView
+    <com.em_projects.tweetings.ui.custom_text.CustomTextView
         android:id="@+id/messageTextView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -30,7 +33,8 @@
         android:gravity="center_horizontal"
         android:text="@string/exit_message"
         android:textColor="@color/mainTextColor"
-        android:textSize="17sp" />
+        android:textSize="17sp"
+        app:custom_font="opensanshebrew-regular-webfont" />
 
     <!--Button
         android:id="@+id/okButton"
@@ -61,27 +65,31 @@
         style="@style/AppButton"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_below="@id/messageTextView"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-        android:text="@android:string/cancel" />
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorPrimary"
+        android:text="לא"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/okButton"
         style="@style/AppButton"
         android:layout_width="@dimen/button_width"
         android:layout_height="@dimen/button_height"
-        android:layout_alignBottom="@id/cancelButton"
-        android:layout_alignTop="@id/cancelButton"
         android:layout_below="@id/messageTextView"
+        android:layout_alignTop="@id/cancelButton"
+        android:layout_alignBottom="@id/cancelButton"
         android:layout_toEndOf="@id/cancelButton"
         android:layout_toRightOf="@id/cancelButton"
-        android:text="@android:string/ok" />
+        android:background="@color/colorPrimary"
+        android:text="כן"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

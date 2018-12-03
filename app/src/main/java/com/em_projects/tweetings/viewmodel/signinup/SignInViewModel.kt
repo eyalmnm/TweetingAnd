@@ -76,7 +76,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         return liveData
     }
 
-    fun signUp(email: String?, name: String?, phone: String?, joinDate: Long?, livingArea: RegionModel?,
+    fun signUp(email: String?, name: String?, phone: String?, joinDate: Long?, livingArea: String?,
                password: String?, acceptEula: Boolean?, acceptOffer: Boolean?): LiveData<DataWrapper<String>> {
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
@@ -94,7 +94,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                 0
             }
             val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-            apiConnector.registrationRequest(appToken, email, name, phone, joinDateStr, livingArea!!.title,
+            apiConnector.registrationRequest(appToken, email, name, phone, joinDateStr, livingArea,
                     password, password, eulaInt, offerInt).enqueue(object : Callback<String> {
 
                 override fun onFailure(call: Call<String>, t: Throwable) {

@@ -59,11 +59,59 @@ public final class Communicator implements Runnable {
         Log.d(TAG, "getRegions");
         String serverUrl = serverURL + "/api/regions.php";
         HashMap params = new HashMap();
-        params.put("token", appToken);
 
         post(serverUrl, params, listener);
     }
 
+
+    public void login(String email, String password, CommListener listener) {
+        Log.d(TAG, "login");
+        String serverUrl = serverURL + "/api/login.php";
+
+        HashMap params = new HashMap();
+        params.put("email", email);
+        params.put("password", password);
+
+        post(serverUrl, params, listener);
+    }
+
+    public void signup(String email, String name, String phone, String dateReg, int livingArea,
+                       String password, int acceptEula, int acceptOffer, CommListener listener) {
+        Log.d(TAG, "login");
+        String serverUrl = serverURL + "/api/login.php";
+
+        HashMap params = new HashMap();
+        params.put("email", email);
+        params.put("name", name);
+        params.put("phone", phone);
+        params.put("dateReg", dateReg);
+        params.put("address", livingArea);
+        params.put("password", password);
+        params.put("password2", password);
+        params.put("agree", acceptEula);
+        params.put("agree2", acceptOffer);
+
+        post(serverUrl, params, listener);
+    }
+
+    public void editUser(String email, String name, String phone, String dateReg, int livingArea,
+                         String currentPassword, String newPassword, int gender, CommListener listener) {
+        Log.d(TAG, "editUser");
+        String serverUrl = serverURL + "/api/userEdit.php";
+
+        HashMap params = new HashMap();
+        params.put("email", email);
+        params.put("name", name);
+        params.put("phone", phone);
+        params.put("dateReg", dateReg);
+        params.put("address", livingArea);
+        params.put("password", currentPassword);
+        params.put("newpassword1", newPassword);
+        params.put("newpassword2", newPassword);
+        params.put("sex", gender);
+
+        post(serverUrl, params, listener);
+    }
 
     @Override
     public void run() {
@@ -198,6 +246,8 @@ public final class Communicator implements Runnable {
 
 
     private void post(final String serverURL, final Map<String, String> params, CommListener listener) {
+        // Add App Token
+        params.put("token", appToken);
 
         queue.add(new CommRequest(serverURL, params, listener));
         synchronized (monitor) {

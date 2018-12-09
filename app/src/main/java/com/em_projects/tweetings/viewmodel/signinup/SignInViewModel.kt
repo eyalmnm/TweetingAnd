@@ -4,7 +4,6 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.model.DataWrapper
 import com.em_projects.tweetings.model.RegionModel
@@ -23,7 +22,6 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
     private val TAG: String = "SignInViewModel"
 
     private var regionsModel: RegionsModel? = null
-    private var appToken: String = Constants.APP_TOKEN
 
     // Convert List To Array
     inline fun <reified T> toArray(list: List<*>): Array<T> {
@@ -34,7 +32,24 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        // TODO
+        Communicator.getInstance().login(email, password, object : CommListener {
+            override fun exceptionThrown(throwable: Throwable?) {
+                dataWrapper.throwable = throwable
+                liveData.value = dataWrapper
+            }
+
+            override fun newDataArrived(response: String?) {
+                val jsonObject = JSONObject(response)
+                val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
+                if (JSONUtils.getBooleanValue(jsonObject, "success")) {
+                    val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
+                    dataWrapper.data = uuid
+                } else {
+                    dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                }
+                liveData.value = dataWrapper
+            }
+        })
         return liveData
     }
 
@@ -46,7 +61,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         return liveData
     }
 
-    fun signUp(email: String?, name: String?, phone: String?, joinDate: Long?, livingArea: String?,
+    fun signUp(email: String?, name: String?, phone: String?, joinDate: Long?, livingArea: RegionModel?,
                password: String?, acceptEula: Boolean?, acceptOffer: Boolean?): LiveData<DataWrapper<String>> {
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
@@ -64,9 +79,28 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                 0
             }
 
-            // TODO
+            Communicator.getInstance().signup(email, name, phone, joinDateStr, livingArea!!.id,
+                    password, eulaInt, offerInt, object : CommListener {
+                override fun newDataArrived(response: String?) {
+                    val jsonObject = JSONObject(response)
+                    val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
+                    if (JSONUtils.getBooleanValue(jsonObject, "success")) {
+                        val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
+                        dataWrapper.data = uuid
+                    } else {
+                        dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                    }
+                    liveData.value = dataWrapper
+                }
+
+                override fun exceptionThrown(throwable: Throwable?) {
+                    dataWrapper.throwable = throwable
+                    liveData.value = dataWrapper
+                }
+
+            });
         } else {
-            dataWrapper.data = "success"
+            dataWrapper.data = Dynamic.uuid
             liveData.value = dataWrapper
         }
         return liveData
@@ -86,13 +120,31 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
         val joinDateStr: String? = TimeUtils.getRegDateStr(joinDate!!)
-        val sexInt = if (isMale) {
+        val gender = if (isMale) {
             1
         } else {
             2
         }
 
-        // TODO
+        Communicator.getInstance().editUser(email, name, phone, joinDateStr, livingArea!!.id, currentPassword,
+                newPassword, gender, object : CommListener {
+            override fun newDataArrived(response: String?) {
+                var jsonObject = JSONObject(response)
+                var dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data")
+                if (JSONUtils.getBooleanValue(jsonObject, "success")) {
+                    val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
+                    dataWrapper.data = uuid
+                } else {
+                    dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                }
+                liveData.value = dataWrapper
+            }
+
+            override fun exceptionThrown(throwable: Throwable?) {
+                dataWrapper.throwable = throwable
+            }
+
+        })
         return liveData
     }
 
@@ -108,13 +160,17 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                 }
 
                 override fun newDataArrived(response: String?) {
-                    var jsonObject: JSONObject = JSONObject(response)
-                    var dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
-                    var jsonArr: JSONArray = JSONUtils.getJsonArray(dataObject, "regions")
-                    var list: List<RegionModel> = ModelsFactory.createRegionsModel(jsonArr)
-                    regionsModel = RegionsModel(toArray<RegionModel>(list))
+                    var jsonObject = JSONObject(response)
+                    var dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data")
+                    if (JSONUtils.getBooleanValue(jsonObject, "success")) {
+                        var jsonArr: JSONArray = JSONUtils.getJsonArray(dataObject, "regions")
+                        var list: List<RegionModel> = ModelsFactory.createRegionsModel(jsonArr)
+                        regionsModel = RegionsModel(toArray<RegionModel>(list))
 
-                    dataWrapper.data = regionsModel
+                        dataWrapper.data = regionsModel
+                    } else {
+                        dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                    }
                     liveData.value = dataWrapper
                 }
             })

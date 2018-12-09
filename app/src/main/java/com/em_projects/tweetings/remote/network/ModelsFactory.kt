@@ -21,5 +21,9 @@ class ModelsFactory {
             }
             return regions
         }
+
+        fun createUUID(jsonObj: JSONObject): String {
+            return JSONUtils.getStringValue(jsonObj, "uuid")
+        }
     }
 }

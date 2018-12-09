@@ -5,6 +5,7 @@
 
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+    <string name="connectivity_problemse">בעיות בתקשורת. אנא נסו מאוחר יותר.</string>
 
     <!-- Login Activity -->
     <string name="login_title">התחבר</string>
@@ -137,5 +138,6 @@
     <string name="ad_sub_title_text">טקסט טקסט טקסט</string>
     <string name="ad_form_title">לבירורים ומידע על פירסום באתר נא השאירו פרטיכם</string>
     <string name="ad_customers">בין לקוחותינו</string>
+
 
 </resources>

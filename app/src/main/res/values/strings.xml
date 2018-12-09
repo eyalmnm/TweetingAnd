@@ -5,6 +5,7 @@
 
     <!-- Main Screen Activity String -->
     <string name="internet_connection_rationale">This app needs access to your Internet so you get offers.</string>
+    <string name="connectivity_problemse">Connectivity Problems. Please try again later.</string>
 
     <!-- Login Activity -->
     <string name="login_title">Connecting</string>

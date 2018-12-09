@@ -21,8 +21,6 @@ import org.json.JSONObject
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
     private val TAG: String = "SignInViewModel"
 
-    private var regionsModel: RegionsModel? = null
-
     // Convert List To Array
     inline fun <reified T> toArray(list: List<*>): Array<T> {
         return (list as List<T>).toTypedArray()
@@ -152,7 +150,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<RegionsModel>> = MutableLiveData()
         val dataWrapper: DataWrapper<RegionsModel> = DataWrapper()
 
-        if (regionsModel == null) {
+        if (Dynamic.regionsModel == null) {
             Communicator.getInstance().getRegions(object : CommListener {
                 override fun exceptionThrown(throwable: Throwable?) {
                     dataWrapper.throwable = throwable
@@ -165,9 +163,9 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                     if (JSONUtils.getBooleanValue(jsonObject, "success")) {
                         var jsonArr: JSONArray = JSONUtils.getJsonArray(dataObject, "regions")
                         var list: List<RegionModel> = ModelsFactory.createRegionsModel(jsonArr)
-                        regionsModel = RegionsModel(toArray<RegionModel>(list))
+                        Dynamic.regionsModel = RegionsModel(toArray<RegionModel>(list))
 
-                        dataWrapper.data = regionsModel
+                        dataWrapper.data = Dynamic.regionsModel
                     } else {
                         dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
                     }
@@ -175,7 +173,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                 }
             })
         } else {
-            dataWrapper.data = this.regionsModel
+            dataWrapper.data = Dynamic.regionsModel
             liveData.value = dataWrapper
         }
         return liveData

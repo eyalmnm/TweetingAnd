@@ -24,7 +24,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private var signUpAreasSpinner: Spinner? = null;
     private var adapter: RegionsSpinnerAdapter? = null
     private var livingAreas: ArrayList<RegionModel>? = null
-    private var area: Int = 1
+    private var area: RegionModel? = null
 
     // Date Picker Dialog
     private var cal = Calendar.getInstance()
@@ -44,7 +44,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         signUpAreasSpinner = findViewById<Spinner>(R.id.signUpAreasSpinner)
         signUpAreasSpinner?.adapter = adapter // SpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
         signUpAreasSpinner?.onItemSelectedListener = this
-        area = livingAreas?.get(0)!!.id
+        area = livingAreas?.get(0)!!
         signUpAreasSpinner?.setSelection(0, true)
 
         signUpJoinDateEditText = findViewById(R.id.signUpJoinDateEditText)
@@ -79,7 +79,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val phone: String = signUpPhoneEditText.text.toString()
         val email: String = signUpEmailEditText.text.toString()
         val joinDate: Long = date
-        val livingArea: Int = area
+        val livingArea: RegionModel = area!!
         val password: String = input_password.text.toString()
         val rePassword: String = input_reEnterPassword.text.toString()
         val acceptEula: Boolean = signUpAcceptEula.isChecked
@@ -137,7 +137,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     // OnItemSelectedListener implementation method
     override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, p3: Long) {
-        area = livingAreas?.get(position)!!.id
+        area = livingAreas?.get(position)!!
     }
 
     val dateSetListener = object : DatePickerDialog.OnDateSetListener {

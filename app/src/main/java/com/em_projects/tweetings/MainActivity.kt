@@ -1,15 +1,22 @@
 package com.em_projects.tweetings
 
 import android.annotation.SuppressLint
+import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.ProgressBar
+import android.widget.Toast
+import com.em_projects.tweetings.model.DataWrapper
+import com.em_projects.tweetings.model.RegionsModel
 import com.em_projects.tweetings.view.main.menu.DrawerActivity
+import com.em_projects.tweetings.viewmodel.signinup.SignInViewModel
 
 
 // Ref: https://stackoverflow.com/questions/5745814/android-change-horizontal-progress-bar-color
@@ -28,13 +35,17 @@ class MainActivity : AppCompatActivity() {
             if (100 >= percentage) {
                 sendMessageDelayed(Message.obtain(this, TICK_WHAT), mFrequency)
             } else {
-                moveToNextScreen()
+                if (canContinueToNext)
+                    moveToNextScreen()
             }
         }
     }
+    private var canContinueToNext: Boolean = true;
 
     private var context: Context? = null
     private val displayTime: Long = 3000
+
+    private var signInViewModel: SignInViewModel? = null
 
     // UI Components
     private var progressBar: ProgressBar? = null
@@ -44,6 +55,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d(TAG, "onCreate")
         context = this
+
+        signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java);
+        signInViewModel!!.getRegionsList().observe(this, Observer<DataWrapper<RegionsModel>> { t ->
+            /**
+             * Called when the data is changed.
+             * @param t  The new data
+             */
+            if (t!!.throwable != null) {
+                Handler(Looper.getMainLooper()).post(object : Runnable {
+
+                    override fun run() {
+                        Toast.makeText(context, R.string.connectivity_problemse, Toast.LENGTH_LONG).show()
+                    }
+                })
+                canContinueToNext = false;
+            }
+        })
 
         progressBar = findViewById(R.id.ProgressBar)
 

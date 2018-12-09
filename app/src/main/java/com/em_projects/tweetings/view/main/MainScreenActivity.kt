@@ -11,6 +11,7 @@ import android.util.Log
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
+import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
@@ -70,7 +71,7 @@ class MainScreenActivity : AppCompatActivity() {
                 var phone: String? = data?.getStringExtra(Constants.PHONE)
                 var email: String? = data?.getStringExtra(Constants.EMAIL)
                 var joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
-                var livingArea: String? = data?.getStringExtra(Constants.LIVING_AREA)
+                var livingArea: RegionModel? = data?.getParcelableExtra(Constants.LIVING_AREA)
                 var password: String? = data?.getStringExtra(Constants.PASSWORD)
                 var acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
                 var acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)

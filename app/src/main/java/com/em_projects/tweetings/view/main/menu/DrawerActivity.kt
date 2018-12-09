@@ -23,6 +23,7 @@ import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.model.DataWrapper
 import com.em_projects.tweetings.model.RegionModel
+import com.em_projects.tweetings.model.RegionsModel
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.menu.fragments.*
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
@@ -50,7 +51,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
 
     private var signInViewModel: SignInViewModel? = null
 
-    private var regionList: ArrayList<RegionModel>? = null
+    private var regionList: List<RegionModel>? = null
 
     // Buttons layouts
     private lateinit var nav_new_user: View
@@ -112,14 +113,14 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
         signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
 
         // Loading the regions list
-        signInViewModel!!.getRegionsList().observe(this, object : Observer<DataWrapper<Array<RegionModel>>> {
+        signInViewModel!!.getRegionsList().observe(this, object : Observer<DataWrapper<RegionsModel>> {
 
-            override fun onChanged(dataWrapper: DataWrapper<Array<RegionModel>>?) {
+            override fun onChanged(dataWrapper: DataWrapper<RegionsModel>?) {
                 if (dataWrapper?.throwable != null) {
                     Toast.makeText(this@DrawerActivity, "Error: " +
                             dataWrapper.throwable.message, Toast.LENGTH_LONG).show()
                 } else {
-                    regionList = (dataWrapper?.data)!!.toCollection(ArrayList<RegionModel>())
+                    regionList = dataWrapper!!.data.regions.toList() //(dataWrapper?.data)!!.toCollection(ArrayList<RegionModel>())
                 }
             }
 
@@ -294,11 +295,11 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                 val phone: String? = data?.getStringExtra(Constants.PHONE)
                 val email: String? = data?.getStringExtra(Constants.EMAIL)
                 val joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
-                val livingArea: Int? = data?.getIntExtra(Constants.LIVING_AREA, 1)
+                val livingArea: RegionModel? = data?.getParcelableExtra(Constants.LIVING_AREA)
                 val password: String? = data?.getStringExtra(Constants.PASSWORD)
                 val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
                 val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
-                signInViewModel?.signUp(name, phone, email, joinDate, livingArea.toString(), password, acceptEula, acceptOffer)
+                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula, acceptOffer)
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
                     val intent = Intent(context, LoginActivity::class.java)

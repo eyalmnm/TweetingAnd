@@ -10,7 +10,10 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
+import com.em_projects.tweetings.config.Dynamic
+import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.utils.StringUtils
+import com.em_projects.tweetings.view.main.adapters.RegionsSpinnerAdapter
 import com.em_projects.tweetings.view.main.adapters.SpinnerAdapter
 import com.em_projects.tweetings.view.main.studies.data_types.DummyChildDataItem
 import com.em_projects.tweetings.view.main.studies.data_types.DummyParentDataItem
@@ -21,9 +24,9 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
 
     // Living Area's Spinner
     private var studiesAreasSpinner: Spinner? = null
-    private var adapter: SpinnerAdapter? = null
-    private var livingAreas: ArrayList<String>? = null
-    private var area: String = "center"
+    private var adapter: RegionsSpinnerAdapter? = null
+    private var livingAreas: ArrayList<RegionModel>? = null
+    private var area: RegionModel? = null
 
     // Bagrut's Spinner
     private var studiesCertificationSpinner: Spinner? = null
@@ -39,8 +42,8 @@ class StudiesContactMeActivity : AppCompatActivity(), AdapterView.OnItemSelected
         setContentView(R.layout.activity_studies_contact_me)
 
         // Init Living Area Spinner
-        livingAreas = resources.getStringArray(R.array.living_areas_array).toCollection(ArrayList())
-        adapter = SpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
+        livingAreas = Dynamic.regionsModel!!.regions.toCollection(ArrayList())
+        adapter = RegionsSpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
         studiesAreasSpinner = findViewById(R.id.studiesAreasSpinner)
         studiesAreasSpinner?.adapter = adapter
         studiesAreasSpinner?.onItemSelectedListener = this

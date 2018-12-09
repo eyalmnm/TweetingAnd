@@ -4,50 +4,37 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.util.Log
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.model.DataWrapper
 import com.em_projects.tweetings.model.RegionModel
-import com.em_projects.tweetings.remote.ApiConnector
-import com.em_projects.tweetings.remote.ApiController
-import com.em_projects.tweetings.utils.RetrofitUtils
+import com.em_projects.tweetings.model.RegionsModel
+import com.em_projects.tweetings.remote.network.CommListener
+import com.em_projects.tweetings.remote.network.Communicator
+import com.em_projects.tweetings.remote.network.ModelsFactory
+import com.em_projects.tweetings.utils.JSONUtils
 import com.em_projects.tweetings.utils.TimeUtils
-import retrofit2.Call
-import retrofit2.Callback;
-import retrofit2.Response
+import org.json.JSONArray
+import org.json.JSONObject
 
 // Ref: https://stackoverflow.com/questions/49573168/how-to-use-enque-method-in-retrofit-in-kotlin-android
 
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
     private val TAG: String = "SignInViewModel"
 
-    private var regionsList: List<RegionModel>? = null
+    private var regionsModel: RegionsModel? = null
     private var appToken: String = Constants.APP_TOKEN
+
+    // Convert List To Array
+    inline fun <reified T> toArray(list: List<*>): Array<T> {
+        return (list as List<T>).toTypedArray()
+    }
 
     fun login(email: String?, password: String?): LiveData<DataWrapper<String>> {
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-        apiConnector.loginRequest(appToken, email, password).enqueue(object : Callback<String> {
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                dataWrapper.throwable = t
-                liveData.value = dataWrapper
-            }
-
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    Dynamic.uuid = response.body()
-                    dataWrapper.data = Dynamic.uuid
-                } else {
-                    dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                }
-                liveData.value = dataWrapper
-            }
-        })
-
+        // TODO
         return liveData
     }
 
@@ -55,24 +42,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-        apiConnector.logoutRequest(appToken, Dynamic.uuid).enqueue(object : Callback<String> {
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                dataWrapper.throwable = t
-                liveData.value = dataWrapper
-            }
-
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    dataWrapper.data = response.body()
-                } else {
-                    dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                }
-                liveData.value = dataWrapper
-            }
-
-        })
+        // TODO
         return liveData
     }
 
@@ -93,25 +63,8 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
             } else {
                 0
             }
-            val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-            apiConnector.registrationRequest(appToken, email, name, phone, joinDateStr, livingArea,
-                    password, password, eulaInt, offerInt).enqueue(object : Callback<String> {
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    dataWrapper.throwable = t
-                    liveData.value = dataWrapper
-                }
-
-                override fun onResponse(call: Call<String>, response: Response<String>) {
-                    if (response.isSuccessful) {
-                        dataWrapper.data = "Registration successfull"
-                    } else {
-                        dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                    }
-                    liveData.value = dataWrapper
-                }
-
-            })
+            // TODO
         } else {
             dataWrapper.data = "success"
             liveData.value = dataWrapper
@@ -123,24 +76,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-        apiConnector.passwordResetRequest(appToken, email).enqueue(object : Callback<String> {
-
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                dataWrapper.throwable = t
-                liveData.value = dataWrapper
-            }
-
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-                    dataWrapper.data = response.body()
-                } else {
-                    dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                }
-                liveData.value = dataWrapper
-            }
-
-        })
+        // TODO
         return liveData
     }
 
@@ -149,62 +85,41 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
         val joinDateStr: String? = TimeUtils.getRegDateStr(joinDate!!)
         val sexInt = if (isMale) {
             1
         } else {
             2
         }
-        apiConnector.editUserDataRequest(appToken, email, name, phone, joinDateStr, livingArea!!.title,
-                currentPassword, newPassword, newPassword, sexInt, Dynamic.uuid).enqueue(object : Callback<String> {
 
-            override fun onFailure(call: Call<String>, t: Throwable) {
-                dataWrapper.throwable = t
-                liveData.value = dataWrapper
-            }
-
-            override fun onResponse(call: Call<String>, response: Response<String>) {
-                if (response.isSuccessful) {
-//                    Dynamic.uuid = response.body()  // TODO Check on real time
-                    dataWrapper.data = response.body()
-                } else {
-                    dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                }
-                liveData.value = dataWrapper
-            }
-
-        })
+        // TODO
         return liveData
     }
 
-    fun getRegionsList(): LiveData<DataWrapper<List<RegionModel>>> {
-        val liveData: MutableLiveData<DataWrapper<List<RegionModel>>> = MutableLiveData()
-        val dataWrapper: DataWrapper<List<RegionModel>> = DataWrapper()
+    fun getRegionsList(): LiveData<DataWrapper<RegionsModel>> {
+        val liveData: MutableLiveData<DataWrapper<RegionsModel>> = MutableLiveData()
+        val dataWrapper: DataWrapper<RegionsModel> = DataWrapper()
 
-        if (regionsList == null) {
-            val apiConnector: ApiConnector = ApiController.createService(ApiConnector::class.java)
-            apiConnector.regionsRequest(appToken).enqueue(object : Callback<List<RegionModel>> {
-
-                override fun onFailure(call: Call<List<RegionModel>>, t: Throwable) {
-                    Log.d(TAG, "getRegionsList -> onFailure: ${t.message}")
-                    dataWrapper.throwable = t
+        if (regionsModel == null) {
+            Communicator.getInstance().getRegions(object : CommListener {
+                override fun exceptionThrown(throwable: Throwable?) {
+                    dataWrapper.throwable = throwable
                     liveData.value = dataWrapper
                 }
 
-                override fun onResponse(call: Call<List<RegionModel>>, response: Response<List<RegionModel>>) {
-                    if (response.isSuccessful) {
-                        regionsList = response.body()
-                        dataWrapper.data = regionsList
-                    } else {
-                        dataWrapper.throwable = Throwable(RetrofitUtils.handleErrorResponse(response))
-                    }
+                override fun newDataArrived(response: String?) {
+                    var jsonObject: JSONObject = JSONObject(response)
+                    var dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
+                    var jsonArr: JSONArray = JSONUtils.getJsonArray(dataObject, "regions")
+                    var list: List<RegionModel> = ModelsFactory.createRegionsModel(jsonArr)
+                    regionsModel = RegionsModel(toArray<RegionModel>(list))
+
+                    dataWrapper.data = regionsModel
                     liveData.value = dataWrapper
                 }
             })
-
         } else {
-            dataWrapper.data = this.regionsList
+            dataWrapper.data = this.regionsModel
             liveData.value = dataWrapper
         }
         return liveData

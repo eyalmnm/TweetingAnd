@@ -11,6 +11,9 @@ class Constants {
         // General Actions
         val ACTION_OPERATION_CANCELLED = "action_operation_cancelled"
 
+        // Extras
+        val EXTRA_REGIONS_LIST = "extra_regions_list"
+
         // Sign In / Sign Up Actions
         val ACTION_SHOW_SIGN_UP_DIALOG = "action_show_sign_up_dialog"
         val ACTION_SHOW_SIGN_IN_DIALOG = "action_show_sign_in_dialog"

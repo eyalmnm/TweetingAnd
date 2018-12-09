@@ -10,8 +10,9 @@ import android.view.View
 import android.widget.*
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
+import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.utils.StringUtils
-import com.em_projects.tweetings.view.main.adapters.SpinnerAdapter
+import com.em_projects.tweetings.view.main.adapters.RegionsSpinnerAdapter
 import kotlinx.android.synthetic.main.activity_signup.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -21,9 +22,9 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     // Living Area's Spinner
     private var signUpAreasSpinner: Spinner? = null;
-    private var adapter: SpinnerAdapter? = null
-    private var livingAreas: ArrayList<String>? = null
-    private var area: String = "center"
+    private var adapter: RegionsSpinnerAdapter? = null
+    private var livingAreas: ArrayList<RegionModel>? = null
+    private var area: Int = 1
 
     // Date Picker Dialog
     private var cal = Calendar.getInstance()
@@ -38,12 +39,12 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         Log.d(TAG, "onCreate")
 
         // Init Spinner
-        livingAreas = resources.getStringArray(R.array.living_areas_array).toCollection(ArrayList())
-        adapter = SpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
+        livingAreas = intent.getParcelableArrayListExtra(Constants.EXTRA_REGIONS_LIST)
+        adapter = RegionsSpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
         signUpAreasSpinner = findViewById<Spinner>(R.id.signUpAreasSpinner)
         signUpAreasSpinner?.adapter = adapter // SpinnerAdapter(this, R.layout.simple_spinner_item, livingAreas!!)
         signUpAreasSpinner?.onItemSelectedListener = this
-        area = livingAreas?.get(0)!!
+        area = livingAreas?.get(0)!!.id
         signUpAreasSpinner?.setSelection(0, true)
 
         signUpJoinDateEditText = findViewById(R.id.signUpJoinDateEditText)
@@ -71,8 +72,6 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         btn_signup.setOnClickListener { view ->
             sendSignUpData()
         }
-
-
     }
 
     private fun sendSignUpData() {
@@ -80,7 +79,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val phone: String = signUpPhoneEditText.text.toString()
         val email: String = signUpEmailEditText.text.toString()
         val joinDate: Long = date
-        val livingArea: String = area
+        val livingArea: Int = area
         val password: String = input_password.text.toString()
         val rePassword: String = input_reEnterPassword.text.toString()
         val acceptEula: Boolean = signUpAcceptEula.isChecked
@@ -101,10 +100,10 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             Toast.makeText(this, R.string.missing_join_date, Toast.LENGTH_LONG).show()
             return
         }
-        if (StringUtils.isNullOrEmpty(livingArea)) {
-            Toast.makeText(this, R.string.missing_living_area, Toast.LENGTH_LONG).show()
-            return
-        }
+//        if (StringUtils.isNullOrEmpty(livingArea)) {
+//            Toast.makeText(this, R.string.missing_living_area, Toast.LENGTH_LONG).show()
+//            return
+//        }
         if (StringUtils.isNullOrEmpty(password)) {
             Toast.makeText(this, R.string.missing_password, Toast.LENGTH_LONG).show()
             return
@@ -138,7 +137,7 @@ class SignUpActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     // OnItemSelectedListener implementation method
     override fun onItemSelected(p0: AdapterView<*>?, view: View?, position: Int, p3: Long) {
-        area = livingAreas?.get(position)!!
+        area = livingAreas?.get(position)!!.id
     }
 
     val dateSetListener = object : DatePickerDialog.OnDateSetListener {

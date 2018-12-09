@@ -2,6 +2,7 @@ package com.em_projects.tweetings.view.main.menu
 
 import android.app.Activity
 import android.app.FragmentManager
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
@@ -15,10 +16,13 @@ import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import com.em_projects.tweetings.BaseActivity
 import com.em_projects.tweetings.R
 import com.em_projects.tweetings.config.Constants
 import com.em_projects.tweetings.config.Dynamic
+import com.em_projects.tweetings.model.DataWrapper
+import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
 import com.em_projects.tweetings.view.main.menu.fragments.*
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
@@ -45,6 +49,8 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     private var context: Context? = null
 
     private var signInViewModel: SignInViewModel? = null
+
+    private var regionList: ArrayList<RegionModel>? = null
 
     // Buttons layouts
     private lateinit var nav_new_user: View
@@ -104,6 +110,20 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
         findViewById<View>(R.id.adMenuItem).setOnClickListener(this)
 
         signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
+
+        // Loading the regions list
+        signInViewModel!!.getRegionsList().observe(this, object : Observer<DataWrapper<Array<RegionModel>>> {
+
+            override fun onChanged(dataWrapper: DataWrapper<Array<RegionModel>>?) {
+                if (dataWrapper?.throwable != null) {
+                    Toast.makeText(this@DrawerActivity, "Error: " +
+                            dataWrapper.throwable.message, Toast.LENGTH_LONG).show()
+                } else {
+                    regionList = (dataWrapper?.data)!!.toCollection(ArrayList<RegionModel>())
+                }
+            }
+
+        })
 
         handler = Handler(mainLooper)
 
@@ -259,6 +279,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
                     val intent = Intent(context, SignUpActivity::class.java)
+                    intent.putParcelableArrayListExtra(Constants.EXTRA_REGIONS_LIST, ArrayList(regionList))
                     startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
                     val intent = Intent(context, ForgetPwdActivity::class.java)
@@ -273,11 +294,11 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                 val phone: String? = data?.getStringExtra(Constants.PHONE)
                 val email: String? = data?.getStringExtra(Constants.EMAIL)
                 val joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
-                val livingArea: String? = data?.getStringExtra(Constants.LIVING_AREA)
+                val livingArea: Int? = data?.getIntExtra(Constants.LIVING_AREA, 1)
                 val password: String? = data?.getStringExtra(Constants.PASSWORD)
                 val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
                 val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
-                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula, acceptOffer)
+                signInViewModel?.signUp(name, phone, email, joinDate, livingArea.toString(), password, acceptEula, acceptOffer)
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
                     val intent = Intent(context, LoginActivity::class.java)

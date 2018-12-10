@@ -30,7 +30,8 @@ class MainScreenActivity : AppCompatActivity() {
     private val SHOW_SIGN_UP_ACTIVITY = SHOW_LOGIN_ACTIVITY + 1
     private val SHOW_FORGET_PASSWORD_ACTIVITY = SHOW_SIGN_UP_ACTIVITY + 1
 
-    private var context: Context? = null
+    private lateinit var context: Context
+    private lateinit var fragmentManager: FragmentManager
 
     private var signInViewModel: SignInViewModel? = null
 
@@ -40,9 +41,10 @@ class MainScreenActivity : AppCompatActivity() {
         Log.d(TAG, "onCreate")
         signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
         context = this
+        fragmentManager = supportFragmentManager
 
         if (StringUtils.isNullOrEmpty(Dynamic.uuid)) {
-            var intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
         }
     }
@@ -53,8 +55,8 @@ class MainScreenActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == SHOW_LOGIN_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                var email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
-                var password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
+                val email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
+                val password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
                 signInViewModel?.login(email, password)!!.observe(this, Observer<DataWrapper<String>> { t ->
                     /**
                      * Called when the data is changed.
@@ -69,10 +71,10 @@ class MainScreenActivity : AppCompatActivity() {
                 })
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
-                    var intent = Intent(context, SignUpActivity::class.java)
+                    val intent = Intent(context, SignUpActivity::class.java)
                     startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
-                    var intent = Intent(context, ForgetPwdActivity::class.java)
+                    val intent = Intent(context, ForgetPwdActivity::class.java)
                     startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
                     showExitDialog()
@@ -80,14 +82,14 @@ class MainScreenActivity : AppCompatActivity() {
             }
         } else if (requestCode == SHOW_SIGN_UP_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                var name: String? = data?.getStringExtra(Constants.NAME)
-                var phone: String? = data?.getStringExtra(Constants.PHONE)
-                var email: String? = data?.getStringExtra(Constants.EMAIL)
-                var joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
-                var livingArea: RegionModel? = data?.getParcelableExtra(Constants.LIVING_AREA)
-                var password: String? = data?.getStringExtra(Constants.PASSWORD)
-                var acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
-                var acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
+                val name: String? = data?.getStringExtra(Constants.NAME)
+                val phone: String? = data?.getStringExtra(Constants.PHONE)
+                val email: String? = data?.getStringExtra(Constants.EMAIL)
+                val joinDate: Long? = data?.getLongExtra(Constants.JOIN_DATE, 0)
+                val livingArea: RegionModel? = data?.getParcelableExtra(Constants.LIVING_AREA)
+                val password: String? = data?.getStringExtra(Constants.PASSWORD)
+                val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
+                val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
                 signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula,
                         acceptOffer)!!.observe(this, Observer<DataWrapper<String>> { t ->
                     /**
@@ -103,10 +105,10 @@ class MainScreenActivity : AppCompatActivity() {
                 })
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
-                    var intent = Intent(context, LoginActivity::class.java)
+                    val intent = Intent(context, LoginActivity::class.java)
                     startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
-                    var intent = Intent(context, ForgetPwdActivity::class.java)
+                    val intent = Intent(context, ForgetPwdActivity::class.java)
                     startActivityForResult(intent, SHOW_FORGET_PASSWORD_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_OPERATION_CANCELLED)) {
                     showExitDialog()
@@ -114,7 +116,7 @@ class MainScreenActivity : AppCompatActivity() {
             }
         } else if (requestCode == SHOW_FORGET_PASSWORD_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
-                var email: String? = data?.getStringExtra(Constants.EMAIL)
+                val email: String? = data?.getStringExtra(Constants.EMAIL)
                 signInViewModel!!.recoverPassword(email).observe(this, Observer<DataWrapper<String>> { t ->
                     /**
                      * Called when the data is changed.
@@ -128,50 +130,43 @@ class MainScreenActivity : AppCompatActivity() {
                     }
                 })
             }
-            var intent = Intent(context, LoginActivity::class.java)
+            val intent = Intent(context, LoginActivity::class.java)
             startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
         }
     }
 
     private fun showLogInSuccessDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: LogInSuccessDialog = LogInSuccessDialog()
+        val dialog = LogInSuccessDialog()
         dialog.show(fragmentManager, LogInSuccessDialog::class.java.simpleName)
     }
 
     private fun showLogInFailedDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: LogInFailedDialog = LogInFailedDialog()
+        val dialog = LogInFailedDialog()
         dialog.show(fragmentManager, LogInFailedDialog::class.java.simpleName)
     }
 
     private fun showRecoverPasswordSuccessDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: RecoverPasswordSuccessDialog = RecoverPasswordSuccessDialog()
+        val dialog = RecoverPasswordSuccessDialog()
         dialog.show(fragmentManager, RecoverPasswordSuccessDialog::class.java.simpleName)
     }
 
     private fun showRecoverPasswordFailedDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: RecoverPasswordFailedDialog = RecoverPasswordFailedDialog()
+        val dialog = RecoverPasswordFailedDialog()
         dialog.show(fragmentManager, RecoverPasswordFailedDialog::class.java.simpleName)
     }
 
     private fun showSignUpSuccessDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: SignUpSuccessDialog = SignUpSuccessDialog()
+        val dialog = SignUpSuccessDialog()
         dialog.show(fragmentManager, SignUpSuccessDialog::class.java.simpleName)
     }
 
     private fun showSignUpFailedDialog() {
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val dialog: SignUpFailedDialog = SignUpFailedDialog()
+        val dialog = SignUpFailedDialog()
         dialog.show(fragmentManager, SignUpFailedDialog::class.java.simpleName)
     }
 
     private fun showExitDialog() {
-        var fragmentManager: FragmentManager = supportFragmentManager
-        var appExitDialog: AppExitDialog = AppExitDialog()
+        val appExitDialog = AppExitDialog()
         appExitDialog.show(fragmentManager, "AppExitDialog")
     }
 

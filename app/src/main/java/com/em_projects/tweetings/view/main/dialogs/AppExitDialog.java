@@ -1,8 +1,8 @@
 package com.em_projects.tweetings.view.main.dialogs;
 
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +29,8 @@ public class AppExitDialog extends DialogFragment implements View.OnClickListene
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         setCancelable(false);
 
-        okButton = (Button) view.findViewById(R.id.okButton);
-        cancelButton = (Button) view.findViewById(R.id.cancelButton);
+        okButton = view.findViewById(R.id.okButton);
+        cancelButton = view.findViewById(R.id.cancelButton);
 
         okButton.setOnClickListener(this);
         cancelButton.setOnClickListener(this);

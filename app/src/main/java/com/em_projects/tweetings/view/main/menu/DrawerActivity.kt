@@ -88,7 +88,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                 showMenu()
             } else {
                 if (menuFragment != null) {
-                    if (menuFragment!!.isAdded()) {
+                    if (menuFragment!!.isAdded) {
                         hideMenu()
                     }
                 }
@@ -113,17 +113,13 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
         signInViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
 
         // Loading the regions list
-        signInViewModel!!.getRegionsList().observe(this, object : Observer<DataWrapper<RegionsModel>> {
-
-            override fun onChanged(dataWrapper: DataWrapper<RegionsModel>?) {
-                if (dataWrapper?.throwable != null) {
-                    Toast.makeText(this@DrawerActivity, "Error: " +
-                            dataWrapper.throwable.message, Toast.LENGTH_LONG).show()
-                } else {
-                    regionList = dataWrapper!!.data.regions.toList() //(dataWrapper?.data)!!.toCollection(ArrayList<RegionModel>())
-                }
+        signInViewModel!!.getRegionsList().observe(this, Observer<DataWrapper<RegionsModel>> { dataWrapper ->
+            if (dataWrapper?.throwable != null) {
+                Toast.makeText(this@DrawerActivity, "Error: " +
+                        dataWrapper.throwable.message, Toast.LENGTH_LONG).show()
+            } else {
+                regionList = dataWrapper!!.data.regions.toList() //(dataWrapper?.data)!!.toCollection(ArrayList<RegionModel>())
             }
-
         })
 
         handler = Handler(mainLooper)
@@ -236,7 +232,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun loadFragment(fragmentCode: Int) {
-        val fragment: Fragment? = getFragmentByCode(fragmentCode);
+        val fragment: Fragment? = getFragmentByCode(fragmentCode)
         if (fragment != null) {
             val pendingRunnable = Runnable {
                 // update the main content by replacing fragments
@@ -276,7 +272,14 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             if (resultCode == Activity.RESULT_OK) {
                 val email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
                 val password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
-                signInViewModel?.login(email, password)
+                signInViewModel?.login(email, password)!!.observe(this, Observer<DataWrapper<String>>
+                /**
+                 * Called when the data is changed.
+                 * @param t  The new data
+                 */
+                {
+                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                })
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
                     val intent = Intent(context, SignUpActivity::class.java)
@@ -322,7 +325,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun showExitDialog() {
-        val fragmentManager: FragmentManager = getFragmentManager()
+        val fragmentManager: FragmentManager = fragmentManager
         val appExitDialog = AppExitDialog()
         appExitDialog.show(fragmentManager, "AppExitDialog")
     }

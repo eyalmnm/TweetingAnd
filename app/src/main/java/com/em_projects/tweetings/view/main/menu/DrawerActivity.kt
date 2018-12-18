@@ -1,7 +1,6 @@
 package com.em_projects.tweetings.view.main.menu
 
 import android.app.Activity
-import android.app.FragmentManager
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
@@ -9,6 +8,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.view.View
 import android.view.animation.Animation
@@ -25,6 +25,8 @@ import com.em_projects.tweetings.model.DataWrapper
 import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.model.RegionsModel
 import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
+import com.em_projects.tweetings.view.main.dialogs.SignUpFailedDialog
+import com.em_projects.tweetings.view.main.dialogs.SignUpSuccessDialog
 import com.em_projects.tweetings.view.main.menu.fragments.*
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
@@ -193,6 +195,7 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             }
             R.id.navRegisterButton -> {
                 val intent = Intent(context, SignUpActivity::class.java)
+                intent.putParcelableArrayListExtra(Constants.EXTRA_REGIONS_LIST, Dynamic.regionsModel!!.regions.toCollection(ArrayList()))
                 startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
             }
             R.id.navPersonalButton -> {
@@ -272,13 +275,15 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
             if (resultCode == Activity.RESULT_OK) {
                 val email: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_EMAIL)
                 val password: String? = data?.getStringExtra(Constants.SIGN_IN_DATA_PASSWORD)
-                signInViewModel?.login(email, password)!!.observe(this, Observer<DataWrapper<String>>
-                /**
-                 * Called when the data is changed.
-                 * @param t  The new data
-                 */
-                {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                signInViewModel?.login(email, password)!!.observe(this, object : Observer<DataWrapper<String>> {
+                    /**
+                     * Called when the data is changed.
+                     * @param t  The new data
+                     */
+                    override fun onChanged(t: DataWrapper<String>?) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
                 })
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
@@ -302,7 +307,27 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                 val password: String? = data?.getStringExtra(Constants.PASSWORD)
                 val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
                 val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
-                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula, acceptOffer)
+                signInViewModel?.signUp(email, name, phone, joinDate, livingArea,
+                        password, acceptEula, acceptOffer)!!.observe(this, Observer<DataWrapper<String>> { t ->
+                    /**
+                     * Called when the data is changed.
+                     * @param t  The new data
+                     */
+                    if (t!!.throwable != null) {
+                        val signUpFailedDialog = SignUpFailedDialog()
+                        val args = Bundle()
+                        args.putString(Constants.EXTRA_DATA, t.throwable.message)
+                        signUpFailedDialog.arguments = args
+                        signUpFailedDialog.show(supportFragmentManager, signUpFailedDialog::class.java.simpleName)
+
+                    } else if (t.data != null) {
+                        val signUpSuccessDialog = SignUpSuccessDialog()
+                        val args = Bundle()
+                        args.putString(Constants.EXTRA_DATA, t.data)
+                        signUpSuccessDialog.arguments = args
+                        signUpSuccessDialog.show(supportFragmentManager, signUpSuccessDialog::class.java.simpleName)
+                    }
+                })
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_IN_DIALOG)) {
                     val intent = Intent(context, LoginActivity::class.java)
@@ -325,13 +350,13 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun showExitDialog() {
-        val fragmentManager: FragmentManager = fragmentManager
+        val fragmentManager: FragmentManager = supportFragmentManager
         val appExitDialog = AppExitDialog()
         appExitDialog.show(fragmentManager, "AppExitDialog")
     }
 
     override fun onBackPressed() {
-        if (isFragmentLoaded == true) {
+        if (isFragmentLoaded) {
             hideMenu()
         } else {
 //            super.onBackPressed()

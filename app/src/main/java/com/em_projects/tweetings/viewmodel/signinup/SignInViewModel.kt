@@ -38,7 +38,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
 
             override fun newDataArrived(response: String?) {
                 val jsonObject = JSONObject(response)
-                val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
+                val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data")
                 if (JSONUtils.getBooleanValue(jsonObject, "success")) {
                     val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
                     dataWrapper.data = uuid
@@ -81,22 +81,22 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                     password, eulaInt, offerInt, object : CommListener {
                 override fun newDataArrived(response: String?) {
                     val jsonObject = JSONObject(response)
-                    val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data");
-                    if (JSONUtils.getBooleanValue(jsonObject, "success")) {
-                        val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
-                        dataWrapper.data = uuid
+                    val data: String = ""
+                    if (JSONUtils.getBooleanValue(jsonObject, "succes")) {
+                        val message: String = JSONUtils.getStringValue(jsonObject, "succes")
+                        dataWrapper.data = message
                     } else {
-                        dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                        dataWrapper.throwable = Throwable(JSONUtils.getStringValue(jsonObject, "err"))
                     }
-                    liveData.value = dataWrapper
+                    liveData.postValue(dataWrapper) // liveData.value = dataWrapper
                 }
 
                 override fun exceptionThrown(throwable: Throwable?) {
                     dataWrapper.throwable = throwable
-                    liveData.value = dataWrapper
+                    liveData.postValue(dataWrapper) // liveData.value = dataWrapper
                 }
 
-            });
+            })
         } else {
             dataWrapper.data = Dynamic.uuid
             liveData.value = dataWrapper
@@ -154,7 +154,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
             Communicator.getInstance().getRegions(object : CommListener {
                 override fun exceptionThrown(throwable: Throwable?) {
                     dataWrapper.throwable = throwable
-                    liveData.value = dataWrapper
+                    liveData.postValue(dataWrapper) // liveData.value = dataWrapper
                 }
 
                 override fun newDataArrived(response: String?) {
@@ -169,7 +169,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                     } else {
                         dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
                     }
-                    liveData.value = dataWrapper
+                    liveData.postValue(dataWrapper) // liveData.value = dataWrapper
                 }
             })
         } else {

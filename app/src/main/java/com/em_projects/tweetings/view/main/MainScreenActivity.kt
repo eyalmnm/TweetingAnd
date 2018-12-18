@@ -47,6 +47,8 @@ class MainScreenActivity : AppCompatActivity() {
             val intent = Intent(context, LoginActivity::class.java)
             startActivityForResult(intent, SHOW_LOGIN_ACTIVITY)
         }
+
+
     }
 
     /**
@@ -72,6 +74,7 @@ class MainScreenActivity : AppCompatActivity() {
             } else if (resultCode == Activity.RESULT_CANCELED) {
                 if (data?.action.equals(Constants.ACTION_SHOW_SIGN_UP_DIALOG)) {
                     val intent = Intent(context, SignUpActivity::class.java)
+                    intent.putParcelableArrayListExtra(Constants.EXTRA_REGIONS_LIST, Dynamic.regionsModel!!.regions.toCollection(ArrayList()))
                     startActivityForResult(intent, SHOW_SIGN_UP_ACTIVITY)
                 } else if (data?.action.equals(Constants.ACTION_SHOW_FORGET_PASSWORD_DIALOG)) {
                     val intent = Intent(context, ForgetPwdActivity::class.java)
@@ -90,7 +93,7 @@ class MainScreenActivity : AppCompatActivity() {
                 val password: String? = data?.getStringExtra(Constants.PASSWORD)
                 val acceptEula: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_EULA, false)
                 val acceptOffer: Boolean? = data?.getBooleanExtra(Constants.ACCEPT_OFFER, false)
-                signInViewModel?.signUp(name, phone, email, joinDate, livingArea, password, acceptEula,
+                signInViewModel?.signUp(email, name, phone, joinDate, livingArea, password, acceptEula,
                         acceptOffer)!!.observe(this, Observer<DataWrapper<String>> { t ->
                     /**
                      * Called when the data is changed.

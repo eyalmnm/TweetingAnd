@@ -2,6 +2,7 @@ package com.em_projects.tweetings.view.main.adapters
 
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,9 +31,11 @@ class RegionsSpinnerAdapter(private val activity: AppCompatActivity, private val
     private fun getCustomView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var row = convertView
         if (row == null) {
-            row = inflater?.inflate(itextViewResourceId, parent, false);
+            row = inflater?.inflate(itextViewResourceId, parent, false)
         }
         val textView: TextView = row?.findViewById(R.id.datTextView)!!
+        textView.gravity = Gravity.END
+        textView.setBackgroundColor(context.resources.getColor(android.R.color.transparent))
         textView.text = regions.get(position).title
         return row
     }

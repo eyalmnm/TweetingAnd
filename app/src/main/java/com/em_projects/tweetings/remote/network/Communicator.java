@@ -77,19 +77,19 @@ public final class Communicator implements Runnable {
 
     public void signup(String email, String name, String phone, String dateReg, int livingArea,
                        String password, int acceptEula, int acceptOffer, CommListener listener) {
-        Log.d(TAG, "login");
-        String serverUrl = serverURL + "/api/login.php";
+        Log.d(TAG, "Register");
+        String serverUrl = serverURL + "/api/register.php";
 
         HashMap params = new HashMap();
         params.put("email", email);
         params.put("name", name);
         params.put("phone", phone);
         params.put("dateReg", dateReg);
-        params.put("address", livingArea);
+        params.put("address", String.valueOf(livingArea));
         params.put("password", password);
         params.put("password2", password);
-        params.put("agree", acceptEula);
-        params.put("agree2", acceptOffer);
+        params.put("agree", String.valueOf(acceptEula));
+        params.put("agree2", String.valueOf(acceptOffer));
 
         post(serverUrl, params, listener);
     }
@@ -235,7 +235,7 @@ public final class Communicator implements Runnable {
         InputStream is = httpResponse.getEntity().getContent();
         InputStreamReader isr = new InputStreamReader(is, "UTF-8");
         BufferedReader bufferedReader = new BufferedReader(isr);
-        StringBuffer stringBuffer = new StringBuffer("");
+        StringBuffer stringBuffer = new StringBuffer();
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
             stringBuffer.append(line);

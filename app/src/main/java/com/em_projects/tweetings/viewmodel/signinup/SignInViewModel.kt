@@ -12,6 +12,7 @@ import com.em_projects.tweetings.remote.network.CommListener
 import com.em_projects.tweetings.remote.network.Communicator
 import com.em_projects.tweetings.remote.network.ModelsFactory
 import com.em_projects.tweetings.utils.JSONUtils
+import com.em_projects.tweetings.utils.StringUtils
 import com.em_projects.tweetings.utils.TimeUtils
 import org.json.JSONArray
 import org.json.JSONObject
@@ -33,19 +34,19 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         Communicator.getInstance().login(email, password, object : CommListener {
             override fun exceptionThrown(throwable: Throwable?) {
                 dataWrapper.throwable = throwable
-                liveData.value = dataWrapper
+                liveData.postValue(dataWrapper) // liveData.value = dataWrapper
             }
 
             override fun newDataArrived(response: String?) {
                 val jsonObject = JSONObject(response)
                 val dataObject: JSONObject = JSONUtils.getJSONObjectValue(jsonObject, "data")
-                if (JSONUtils.getBooleanValue(jsonObject, "success")) {
-                    val uuid: String = JSONUtils.getStringValue(dataObject, "uuid")
+                if (!StringUtils.isNullOrEmpty(JSONUtils.getStringValue(jsonObject, "succes"))) {
+                    val uuid: String = JSONUtils.getStringValue(dataObject, "userkey")
                     dataWrapper.data = uuid
                 } else {
-                    dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "error"))
+                    dataWrapper.throwable = Throwable(JSONUtils.getStringValue(dataObject, "err"))
                 }
-                liveData.value = dataWrapper
+                liveData.postValue(dataWrapper) // liveData.value = dataWrapper
             }
         })
         return liveData
@@ -81,8 +82,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                     password, eulaInt, offerInt, object : CommListener {
                 override fun newDataArrived(response: String?) {
                     val jsonObject = JSONObject(response)
-                    val data: String = ""
-                    if (JSONUtils.getBooleanValue(jsonObject, "succes")) {
+                    if (!StringUtils.isNullOrEmpty(JSONUtils.getStringValue(jsonObject, "succes"))) {
                         val message: String = JSONUtils.getStringValue(jsonObject, "succes")
                         dataWrapper.data = message
                     } else {
@@ -108,7 +108,23 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
         val liveData: MutableLiveData<DataWrapper<String>> = MutableLiveData()
         val dataWrapper: DataWrapper<String> = DataWrapper()
 
-        // TODO
+        Communicator.getInstance().resetPassword(email, object : CommListener {
+            override fun exceptionThrown(throwable: Throwable?) {
+                dataWrapper.throwable = throwable
+                liveData.postValue(dataWrapper) // liveData.value = dataWrapper
+            }
+
+            override fun newDataArrived(response: String?) {
+                val jsonObject = JSONObject(response)
+                if (!StringUtils.isNullOrEmpty(JSONUtils.getStringValue(jsonObject, "success"))) {
+                    val message: String = JSONUtils.getStringValue(jsonObject, "success")
+                    dataWrapper.data = message
+                } else {
+                    dataWrapper.throwable = Throwable(JSONUtils.getStringValue(jsonObject, "err"))
+                }
+                liveData.postValue(dataWrapper) // liveData.value = dataWrapper
+            }
+        })
         return liveData
     }
 

@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 // Ref: https://stackoverflow.com/questions/37201504/how-to-setoneditoractionlistener-with-kotlin
 class LoginActivity : AppCompatActivity() {
-    private val TAG: String = "LoginActivity";
+    private val TAG: String = "LoginActivity"
 
     private var context: Context? = null
     private var progressDialog: ProgressDialog? = null
@@ -82,13 +82,12 @@ class LoginActivity : AppCompatActivity() {
         if (StringUtils.isNullOrEmpty(email) || StringUtils.isNullOrEmpty(password)) {
             Toast.makeText(context, R.string.missing_data_all, Toast.LENGTH_SHORT).show()
         } else {
-
+            var intent: Intent = Intent()
+            intent.putExtra(Constants.SIGN_IN_DATA_EMAIL, email)
+            intent.putExtra(Constants.SIGN_IN_DATA_PASSWORD, password)
+            setResult(Activity.RESULT_OK, intent)
+            finish()
         }
     }
 
-    override fun onBackPressed() {
-//        var intent: Intent = Intent(Constants.ACTION_OPERATION_CANCELLED)
-//        setResult(Activity.RESULT_CANCELED, intent)
-        super.onBackPressed()
-    }
 }

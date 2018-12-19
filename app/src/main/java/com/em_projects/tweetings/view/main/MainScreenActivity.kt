@@ -128,7 +128,7 @@ class MainScreenActivity : AppCompatActivity() {
                     if (t!!.throwable != null) {
                         showRecoverPasswordFailedDialog()
                     } else {
-                        Dynamic.uuid = t.data
+                        val newPassword: String = t.data
                         showRecoverPasswordSuccessDialog()
                     }
                 })

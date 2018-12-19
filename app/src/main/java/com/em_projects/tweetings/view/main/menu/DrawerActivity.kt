@@ -24,9 +24,7 @@ import com.em_projects.tweetings.config.Dynamic
 import com.em_projects.tweetings.model.DataWrapper
 import com.em_projects.tweetings.model.RegionModel
 import com.em_projects.tweetings.model.RegionsModel
-import com.em_projects.tweetings.view.main.dialogs.AppExitDialog
-import com.em_projects.tweetings.view.main.dialogs.SignUpFailedDialog
-import com.em_projects.tweetings.view.main.dialogs.SignUpSuccessDialog
+import com.em_projects.tweetings.view.main.dialogs.*
 import com.em_projects.tweetings.view.main.menu.fragments.*
 import com.em_projects.tweetings.view.main.signinup.ForgetPwdActivity
 import com.em_projects.tweetings.view.main.signinup.LoginActivity
@@ -281,7 +279,20 @@ class DrawerActivity : BaseActivity(), View.OnClickListener {
                      * @param t  The new data
                      */
                     override fun onChanged(t: DataWrapper<String>?) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                        if (t!!.throwable != null) {
+                            val loginFailedDialog = LogInFailedDialog()
+                            val args = Bundle()
+                            args.putString(Constants.EXTRA_DATA, t.throwable.message)
+                            loginFailedDialog.arguments = args
+                            loginFailedDialog.show(supportFragmentManager, loginFailedDialog::class.java.simpleName)
+
+                        } else if (t.data != null) {
+                            val loginSuccessDialog = LogInSuccessDialog()
+                            val args = Bundle()
+                            args.putString(Constants.EXTRA_DATA, t.data)
+                            loginSuccessDialog.arguments = args
+                            loginSuccessDialog.show(supportFragmentManager, loginSuccessDialog::class.java.simpleName)
+                        }
                     }
 
                 })

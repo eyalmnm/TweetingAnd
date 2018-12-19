@@ -94,6 +94,16 @@ public final class Communicator implements Runnable {
         post(serverUrl, params, listener);
     }
 
+    public void resetPassword(String email, CommListener listener) {
+        Log.d(TAG, "resetPassword");
+        String serverUrl = serverURL + "/api/restore.php";
+
+        HashMap params = new HashMap();
+        params.put("email", email);
+
+        post(serverUrl, params, listener);
+    }
+
     public void editUser(String email, String name, String phone, String dateReg, int livingArea,
                          String currentPassword, String newPassword, int gender, CommListener listener) {
         Log.d(TAG, "editUser");
